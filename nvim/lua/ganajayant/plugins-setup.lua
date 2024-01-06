@@ -29,7 +29,8 @@ return packer.startup(function(use)
   use 'numToStr/Comment.nvim'
   use 'nvim-lua/plenary.nvim'
   use 'nvim-tree/nvim-tree.lua'
-  if packer_bootstrap then
-    require('packer').sync()
+  use 'kyazdani42/nvim-web-devicons'
+  use 'nvim-lualine/lualine.nvim'
+  if packer_bootstrap then require('packer').sync()
   end
 end)

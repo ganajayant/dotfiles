@@ -42,12 +42,12 @@ style = "Bold Italic"
 style = "Italic"
 
 [font.normal]
+family = "FiraCode Nerd Font Mono"
 style = "Regular"
 
 [window]
 decorations = "buttonless"
 dynamic_padding = false
-opacity = 1
 option_as_alt = "Both"
 startup_mode = "Windowed"
 
