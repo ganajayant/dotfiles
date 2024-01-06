@@ -2,4 +2,5 @@ require("ganajayant.plugins-setup")
 require("ganajayant.core.options")
 require("ganajayant.core.keymaps")
 require("ganajayant.core.colorscheme")
-
+require("ganajayant.plugins.comment")
+require("ganajayant.plugins.nvim-tree")

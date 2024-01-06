@@ -42,7 +42,6 @@ style = "Bold Italic"
 style = "Italic"
 
 [font.normal]
-family = "Menlo"
 style = "Regular"
 
 [window]
