@@ -4,9 +4,5 @@ function mkcd() {
 }
 
 function count() {
-    l1 "$@" | wc -l
-}
-
-function lt() {
-    tree -h -L "$1"
+    ls1 "$@" | wc -l
 }
