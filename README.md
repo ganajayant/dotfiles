@@ -14,7 +14,7 @@ Feel free to explore the dotfiles, adapt them to your needs, or use them as a re
 To use these dotfiles, follow these steps:
 
 1. Clone the repository to your local machine:
-```git clone https://github.com/your-username/dotfiles.git```
+```git clone https://github.com/ganajayant/dotfiles.git```
 
 2. Explore the different configuration files (e.g., `.zshrc`, `aliases.zsh`, `functions.zsh`) to familiarize yourself with the available settings and customizations.
 
