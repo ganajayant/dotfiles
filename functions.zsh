@@ -8,5 +8,7 @@ function count() {
 }
 
 function push() {
-    git add . && git commit -m "$@" && git push origin
+    git add .
+    git commit -m "$@"
+    git push origin
 }
