@@ -20,13 +20,18 @@ alias pipfreeze="pip freeze > requirements.txt"
 # System
 alias home="cd ~"
 alias ..="cd .."
+alias ...="cd ../.."
 alias c="clear"
 alias e="exit"
 alias dockreset="defaults write com.apple.dock ResetLaunchPad -bool true; killall Dock"
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-alias rmf="rm -rf"
+alias ll="ls -alF"
+alias la="ls -A"
+alias l="ls -CF"
+alias ls1="ls -1"
+alias mv="mv -v"
+alias cp="cp -rv"
+alias rm="rm -Irv"
+alias sizeof='ls -lh'
 
 # Git
 alias gitinit="git init"
