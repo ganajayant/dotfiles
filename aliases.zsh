@@ -34,13 +34,13 @@ alias rm="rm -Irv"
 alias sizeof='ls -lh'
 
 # Git
-alias gitinit="git init"
-alias gitstatus="git status"
-alias gitadd="git add $1"
-alias gitcommit="git commit -m $1"
+alias giti="git init"
+alias gits="git status"
+alias gita="git add $1"
+alias gitc="git commit -m $1"
 alias gitpull="git pull --rebase origin $1"
 alias gitpush="git push -u origin $1"
-alias gitclone="git clone $1"
+alias gitcl="git clone $1"
 alias gitremote="git remote add origin $1"
 
 # Web
