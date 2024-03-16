@@ -16,6 +16,7 @@ push() {
         echo "Commit message is required."
         return 1
     fi
+    find . -name '.DS_Store' -type f -delete
     git add .
     git commit -m "$@"
     git push origin
