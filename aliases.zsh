@@ -32,6 +32,7 @@ alias mv="mv -v"
 alias cp="cp -rv"
 alias rm="rm -Irv"
 alias sizeof='ls -lh'
+alias f="fuck"
 
 # Git
 alias giti="git init"
