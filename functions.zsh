@@ -1,14 +1,35 @@
 # Functions
-function mkcd() {
+mkcd() {
+    if (($# != 1)); then
+        echo "Invalid number of parameters. Usage: mkc <DIR_PATH>"
+        return 1
+    fi
     mkdir -p "$@" && cd "$_"
 }
 
-function count() {
-    ls1 "$@" | wc -l
+count() {
+    ls -1 "$@" | wc -l
 }
 
-function push() {
+push() {
+    if [ $# -eq 0 ]; then
+        echo "Commit message is required."
+        return 1
+    fi
     git add .
     git commit -m "$@"
     git push origin
+}
+
+reload() {
+    source ~/.zshrc
+    echo "ZSH configuration reloaded."
+}
+
+fs() {
+    if [[ -n "$@" ]]; then
+        du -sh -- "$@"
+    else
+        du -sh ./*
+    fi
 }
