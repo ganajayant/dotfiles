@@ -1,10 +1,10 @@
 # Functions
 mkcd() {
     if (($# != 1)); then
-        echo "Invalid number of parameters. Usage: mkc <DIR_PATH>"
+        echo "Invalid number of parameters. Usage: mkcd <DIR_PATH>"
         return 1
     fi
-    mkdir -p "$@" && cd "$_"
+    mkdir -p "$@" && cd "$@" || return 1
 }
 
 count() {
@@ -17,9 +17,7 @@ push() {
         return 1
     fi
     find . -name '.DS_Store' -type f -delete
-    git add .
-    git commit -m "$@"
-    git push origin
+    git add . && git commit -m "$@" && git push origin
 }
 
 reload() {
@@ -33,4 +31,12 @@ fs() {
     else
         du -sh ./*
     fi
+}
+
+clonecd() {
+    if (($# != 1)); then
+        echo "Invalid number of parameters. Usage: clonecd <REPO_URL>"
+        return 1
+    fi
+    git clone "$@" && cd "$(basename "$@" .git)" && code .
 }
