@@ -21,6 +21,8 @@ if command -v pip &>/dev/null; then
     alias pipuninstall="pip uninstall"
     alias pipimp="pip install ipykernel matplotlib numpy pandas scikit-learn scipy seaborn torch torchvision torchaudio virtualenv"
     alias pipremove="pip freeze | xargs pip uninstall -y"
+    alias pipvirtual="virtualenv venv"
+    alias pipactivate="source venv/bin/activate"
     alias pipfreeze="pip freeze > requirements.txt"
 fi
 
@@ -29,6 +31,7 @@ alias home="cd ~"
 alias ..="cd .."
 alias ...="cd ../.."
 alias c="clear"
+alias t="touch"
 alias e="exit"
 alias dockreset="defaults write com.apple.dock ResetLaunchPad -bool true && killall Dock"
 alias ll="ls -alF"
