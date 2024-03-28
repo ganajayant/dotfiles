@@ -33,7 +33,6 @@ alias ...="cd ../.."
 alias c="clear"
 alias t="touch"
 alias e="exit"
-alias dockreset="defaults write com.apple.dock ResetLaunchPad -bool true && killall Dock"
 alias ll="ls -alF"
 alias la="ls -A"
 alias l="ls -CF"
@@ -42,10 +41,6 @@ alias mv="mv -v"
 alias cp="cp -rv"
 alias rm="rm -Irv"
 alias sizeof="ls -lh"
-
-if command -v fuck &>/dev/null; then
-    alias f="fuck"
-fi
 
 # Git
 if command -v git &>/dev/null; then
