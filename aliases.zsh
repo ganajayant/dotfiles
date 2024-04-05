@@ -7,18 +7,26 @@ if command -v brew &>/dev/null; then
     alias list="brew list"
 fi
 
+if command -v mas &>/dev/null; then
+    alias installa="mas install"
+    alias updatea="mas upgrade"
+    alias search="mas search"
+    alias uninstalla="mas uninstall"
+    alias updateall="update && updatea"
+fi
+
 if command -v npm &>/dev/null; then
-    alias npmsearch="npm search"
-    alias npminstall="npm install"
-    alias npmupdate="sudo npm upgrade -g"
-    alias npmuninstall="npm uninstall"
+    alias npms="npm search"
+    alias npmi="npm install"
+    alias npmup="sudo npm upgrade -g"
+    alias npmun="npm uninstall"
 fi
 
 if command -v pip &>/dev/null; then
-    alias pipsearch="pip search"
-    alias pipinstall="pip install"
-    alias pipupdate="pip list --format=freeze | cut -d = -f 1 | xargs pip install --upgrade"
-    alias pipuninstall="pip uninstall"
+    alias pips="pip search"
+    alias pipi="pip install"
+    alias pipup="pip list --format=freeze | cut -d = -f 1 | xargs pip install --upgrade"
+    alias pipun="pip uninstall"
     alias pipimp="pip install ipykernel matplotlib numpy pandas scikit-learn scipy seaborn torch torchvision torchaudio virtualenv"
     alias pipremove="pip freeze | xargs pip uninstall -y"
     alias pipvirtual="virtualenv venv"
