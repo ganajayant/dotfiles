@@ -40,3 +40,14 @@ clonecd() {
     fi
     git clone "$@" && cd "$(basename "$@" .git)" && code .
 }
+
+up() {
+    local counter=${1:-1}
+    local dirup="../"
+    local out=""
+    while ((counter > 0)); do
+        let counter--
+        out="${out}$dirup"
+    done
+    cd $out || return 1
+}

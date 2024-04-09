@@ -12,4 +12,4 @@
 # @raycast.author ganajayant
 # @raycast.authorURL https://raycast.com/ganajayant
 
-defaults write com.apple.dock ResetLaunchPad -bool true && killall Dock
+rm -rf /Applications/Google\ Docs.app && rm -rf /Applications/Google\ Slides.app && rm -rf /Applications/Google\ Sheets.app && defaults write com.apple.dock ResetLaunchPad -bool true && killall Dock

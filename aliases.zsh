@@ -10,7 +10,7 @@ fi
 if command -v mas &>/dev/null; then
     alias installa="mas install"
     alias updatea="mas upgrade"
-    alias search="mas search"
+    alias searcha="mas search"
     alias uninstalla="mas uninstall"
     alias updateall="update && updatea"
 fi
@@ -36,8 +36,6 @@ fi
 
 # System
 alias home="cd ~"
-alias ..="cd .."
-alias ...="cd ../.."
 alias c="clear"
 alias t="touch"
 alias e="exit"
@@ -49,6 +47,7 @@ alias mv="mv -v"
 alias cp="cp -rv"
 alias rm="rm -Irv"
 alias sizeof="ls -lh"
+alias untar="tar -zxvf"
 
 # Git
 if command -v git &>/dev/null; then
