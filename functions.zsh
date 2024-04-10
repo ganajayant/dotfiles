@@ -42,6 +42,10 @@ clonecd() {
 }
 
 up() {
+    if (($# == 0)); then
+        echo "Counter is required."
+        return 1
+    fi
     local counter=${1:-1}
     local dirup="../"
     local out=""

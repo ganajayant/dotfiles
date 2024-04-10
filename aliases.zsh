@@ -51,21 +51,19 @@ alias untar="tar -zxvf"
 
 # Git
 if command -v git &>/dev/null; then
-    alias giti="git init"
-    alias gits="git status"
-    alias gita="git add"
-    alias gitc="git commit -m"
-    alias gitpull="git pull --rebase origin"
-    alias gitpush="git push -u origin"
-    alias gitcl="git clone"
-    alias gitremote="git remote add origin"
+    alias gi="git init"
+    alias gs="git status"
+    alias ga="git add"
+    alias gc="git commit -m"
+    alias gpull="git pull --rebase origin"
+    alias gpush="git push -u origin"
+    alias gclone="git clone"
+    alias gr="git remote add origin"
 fi
 
 # Web
 alias brave="open -a 'Brave Browser' --args"
 alias incognito="open -a 'Brave Browser' -n --args --incognito"
-alias goku="open -a 'Brave Browser' -n --args --incognito --new-window https://goku.sx/home/"
-alias heymovies="open -a 'Brave Browser' -n --args --incognito --new-window https://heymovies.to/home"
 
 # Common Directories
 alias air='$(go env GOPATH)/bin/air'
