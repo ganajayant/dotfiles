@@ -19,19 +19,19 @@ if command -v npm &>/dev/null; then
     alias npms="npm search"
     alias npmi="npm install"
     alias npmup="sudo npm upgrade -g"
-    alias npmun="npm uninstall"
+    alias npmui="npm uninstall"
 fi
 
 if command -v pip &>/dev/null; then
+    alias pipimp="pip install ipykernel matplotlib numpy pandas scikit-learn scipy seaborn torch torchvision torchaudio virtualenv"
     alias pips="pip search"
     alias pipi="pip install"
     alias pipup="pip list --format=freeze | cut -d = -f 1 | xargs pip install --upgrade"
-    alias pipun="pip uninstall"
-    alias pipimp="pip install ipykernel matplotlib numpy pandas scikit-learn scipy seaborn torch torchvision torchaudio virtualenv"
-    alias pipremove="pip freeze | xargs pip uninstall -y"
-    alias pipvirtual="virtualenv venv"
-    alias pipactivate="source venv/bin/activate"
-    alias pipfreeze="pip freeze > requirements.txt"
+    alias pipui="pip uninstall"
+    alias piprm="pip freeze | xargs pip uninstall -y"
+    alias pipv="virtualenv venv"
+    alias pipa="source venv/bin/activate"
+    alias piprq="pip freeze > requirements.txt"
 fi
 
 # System
@@ -67,3 +67,7 @@ alias incognito="open -a 'Brave Browser' -n --args --incognito"
 
 # Common Directories
 alias air='$(go env GOPATH)/bin/air'
+
+alias jayant='ssh raspberrypi@jayant.local'
+alias rahul='ssh raspberrypi@rahul.local'
+alias sudha='ssh raspberrypi@sudha.local'
