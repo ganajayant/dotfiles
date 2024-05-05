@@ -3,10 +3,6 @@ if command -v fnm &>/dev/null; then
     eval "$(fnm env --use-on-cd)"
 fi
 
-if command -v thefuck &>/dev/null; then
-    eval $(thefuck --alias)
-fi
-
 # ZSH Plugins
 if [ -f /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
     source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
