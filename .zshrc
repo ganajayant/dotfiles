@@ -1,8 +1,19 @@
 autoload -Uz compinit && compinit
 
+# Eza
+if command -v eza &>/dev/null; then
+    alias ls="eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions"
+
+fi
+
 # Node Version Manager
 if command -v fnm &>/dev/null; then
     eval "$(fnm env --use-on-cd)"
+fi
+
+# FuzzyFinder
+if command -v fzf &>/dev/null; then
+    eval "$(fzf --zsh)"
 fi
 
 # ZSH Plugins

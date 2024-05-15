@@ -64,6 +64,3 @@ fi
 # Web
 alias brave="open -a 'Brave Browser' --args"
 alias incognito="open -a 'Brave Browser' -n --args --incognito"
-
-# Common Directories
-alias air='$(go env GOPATH)/bin/air'
