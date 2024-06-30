@@ -1,6 +1,10 @@
 # JDK
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 
+# Go Lang
+GOPATH=$HOME/go
+PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
+
 # CLICOLOR
 export CLICOLOR=1
 
