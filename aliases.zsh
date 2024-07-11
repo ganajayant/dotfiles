@@ -34,6 +34,11 @@ if command -v pip3 &>/dev/null; then
     alias piprq="pip3 freeze > requirements.txt"
 fi
 
+if command -v nvim &>/dev/null; then
+    alias vi="nvim"
+    alias vim="nvim"
+fi
+
 # System
 alias home="cd ~"
 alias c="clear"

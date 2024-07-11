@@ -7,7 +7,6 @@ set show-all-if-ambiguous on
 # Eza
 if command -v eza &>/dev/null; then
     alias ls="eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions"
-
 fi
 
 # Node Version Manager

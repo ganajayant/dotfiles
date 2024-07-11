@@ -11,6 +11,34 @@ count() {
     ls -1 "$@" | wc -l
 }
 
+generate_maven_project() {
+    if ! command -v mvn &> /dev/null; then
+        echo "Maven is not installed. Please install Maven before running this script."
+        return 1
+    fi
+
+    if [[ $# -lt 1 || $# -gt 2 ]]; then
+        echo "Usage: generate_maven_project [<groupId>] <artifactId>"
+        return 1
+    fi
+
+    local groupId="com.example"
+    local artifactId=$1
+
+    if [[ $# -eq 2 ]]; then
+        groupId=$1
+        artifactId=$2
+    else
+        artifactId=$1
+    fi
+
+    mvn archetype:generate \
+        -DgroupId=$groupId \
+        -DartifactId=$artifactId \
+        -DarchetypeCatalog=internal \
+        -DinteractiveMode=false
+}
+
 push() {
     if [ $# -eq 0 ]; then
         echo "Commit message is required."
