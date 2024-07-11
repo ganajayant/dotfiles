@@ -1,0 +1,15 @@
+[window]
+
+startup_mode = "Maximized"
+padding.x = 10
+padding.y = 10
+decorations = "Buttonless"
+
+[font]
+
+size = 16
+normal.family = "Hack Nerd Font Mono"
+bold.family = "Hack Nerd Font Mono"
+italic.family = "Hack Nerd Font Mono"
+bold_italic.family = "Hack Nerd Font Mono"
+
