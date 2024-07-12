@@ -21,7 +21,7 @@ To use these dotfiles, follow these steps:
 3. Customize the dotfiles to your liking, adding your own aliases, functions, or modifying existing configurations.
 
 4. Symlink the desired configuration files to their appropriate locations in your home directory. For example:
-```ln -s ~/dotfiles/.zshrc ~/.zshrc```
+```chmod +x setup.sh && ./setup.sh```
 
 5. Restart your terminal or reload the configuration files for the changes to take effect.
 
