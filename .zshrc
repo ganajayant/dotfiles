@@ -1,8 +1,17 @@
 autoload -Uz compinit && compinit
-
-# List all items after pressing tab
 set completion-ignore-case on
 set show-all-if-ambiguous on
+
+bindkey -e
+bindkey '^p' history-search-backward
+bindkey '^n' history-search-forward
+
+setopt sharehistory
+setopt hist_ignore_all_dups
+setopt hist_save_no_dups
+setopt hist_ignore_dups
+setopt hist_find_no_dups
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
 # Eza
 if command -v eza &>/dev/null; then
@@ -28,15 +37,13 @@ if [ -f /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 
     source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
 
+if type brew &>/dev/null; then
+    FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+    autoload -Uz compinit
+    compinit
+  fi
+
 # Custom Aliases, Functions & Exports
-if [ -f ~/dotfiles/zsh-config/aliases.zsh ]; then
-    source ~/dotfiles/zsh-config/aliases.zsh
-fi
-
-if [ -f ~/dotfiles/zsh-config/exports.zsh ]; then
-    source ~/dotfiles/zsh-config/exports.zsh
-fi
-
-if [ -f ~/dotfiles/zsh-config/functions.zsh ]; then
-    source ~/dotfiles/zsh-config/functions.zsh
-fi
+for config_file in ~/dotfiles/zsh-config/{aliases,exports,functions}.zsh; do
+    [ -f "$config_file" ] && source "$config_file"
+done
