@@ -12,7 +12,7 @@ count() {
 }
 
 generate_maven_project() {
-    if ! command -v mvn &> /dev/null; then
+    if ! command -v mvn &>/dev/null; then
         echo "Maven is not installed. Please install Maven before running this script."
         return 1
     fi

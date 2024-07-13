@@ -1,3 +1,12 @@
+addToPathFront() {
+    if [[ "$PATH" != *"$1"* ]]; then
+        export PATH=$1:$PATH
+    fi
+}
+
+addToPathFront ~/dotfiles/scripts
+bindkey -s ^f "tmux-sessionizer\n"
+
 autoload -Uz compinit && compinit
 set completion-ignore-case on
 set show-all-if-ambiguous on
@@ -41,7 +50,7 @@ if type brew &>/dev/null; then
     FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
     autoload -Uz compinit
     compinit
-  fi
+fi
 
 # Custom Aliases, Functions & Exports
 for config_file in ~/dotfiles/zsh-config/{aliases,exports,functions}.zsh; do
