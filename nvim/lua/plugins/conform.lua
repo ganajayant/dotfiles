@@ -23,8 +23,8 @@ return {
 		formatters_by_ft = {
 			lua = { "stylua" },
 			java = { "lua-language-server" },
-			zsh = { "beautysh" },
-			sh = { "beautysh" },
+			zsh = { "shfmt" },
+			sh = { "shfmt" },
 		},
 	},
 }
