@@ -22,7 +22,7 @@ vim.opt.splitbelow = true
 vim.opt.list = true
 vim.opt.inccommand = "split"
 vim.opt.cursorline = true
-vim.opt.scrolloff = 15
+vim.opt.scrolloff = 18
 
 vim.opt.hlsearch = true
 vim.opt.incsearch = true
