@@ -1,3 +1,0 @@
-return {
-	"gosukiwi/vim-smartpairs",
-}
