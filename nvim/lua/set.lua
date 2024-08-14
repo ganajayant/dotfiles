@@ -11,6 +11,8 @@ vim.opt.smarttab = true
 vim.opt.wrap = true
 vim.opt.backspace = { "start", "eol", "indent" }
 
+vim.cmd("filetype plugin indent on")
+
 vim.opt.mouse = "a"
 vim.opt.showmode = false
 vim.opt.clipboard = "unnamedplus"
