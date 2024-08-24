@@ -4,7 +4,6 @@ startup_mode = "Maximized"
 padding.x = 10
 padding.y = 10
 decorations = "Buttonless"
-
 [font]
 
 size = 16
