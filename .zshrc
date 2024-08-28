@@ -30,6 +30,9 @@ fi
 # Node Version Manager
 if command -v fnm &>/dev/null; then
     eval "$(fnm env --use-on-cd)"
+    if [[ -f .node-version || -f .nvmrc ]]; then
+        fnm use
+    fi
 fi
 
 # FuzzyFinder
