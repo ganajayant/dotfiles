@@ -3,6 +3,13 @@
 local keymap = vim.keymap
 local opts = { noremap = true, silent = true }
 
+keymap.set("x", "<leader>p", [["_dP]])
+
+keymap.set({ "n", "v" }, "<leader>y", [["+y]])
+keymap.set("n", "<leader>Y", [["+Y]])
+
+keymap.set({ "n", "v" }, "<leader>d", [["_d]])
+
 keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 keymap.set("i", "jk", "<Esc>")
