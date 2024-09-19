@@ -7,6 +7,8 @@ keymap.set("x", "<leader>p", [["_dP]])
 keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 keymap.set("n", "<leader>Y", [["+Y]])
 keymap.set({ "n", "v" }, "<leader>d", [["_d]])
+keymap.set({ "n", "v" }, "<leader>p", [["+p]])
+keymap.set("n", "<leader>P", [["+P]])
 
 keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
@@ -36,3 +38,7 @@ keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" 
 keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
 keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
 keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
+
+keymap.set("i", "<S-Tab>", "<C-d>")
+keymap.set("v", "<S-Tab>", "<<")
+keymap.set("v", "<Tab>", ">>")

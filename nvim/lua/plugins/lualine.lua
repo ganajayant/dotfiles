@@ -9,7 +9,7 @@ return {
 			},
 			options = {
 				icons_enabled = true,
-				theme = "rose-pine",
+				theme = "tokyonight-night",
 				component_separators = "|",
 				section_separators = { left = "", right = "" },
 			},

@@ -1,9 +1,10 @@
 return {
 	{
-		"rose-pine/neovim",
+		"folke/tokyonight.nvim",
+		lazy = true,
 		priority = 1000,
 		init = function()
-			vim.cmd.colorscheme("rose-pine")
+			vim.cmd.colorscheme("tokyonight-night")
 			vim.cmd.hi("Comment gui=none")
 		end,
 	},
