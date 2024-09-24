@@ -16,6 +16,8 @@ create_symlink ~/dotfiles/.zshrc ~/.zshrc
 
 create_symlink ~/dotfiles/additional-config/.clang-format ~/.clang-format
 
+create_symlink ~/dotfiles/additional-config/.clangd ~/.clangd
+
 create_symlink ~/dotfiles/nvim ~/.config/nvim
 
 create_symlink ~/dotfiles/alacritty ~/.config/alacritty

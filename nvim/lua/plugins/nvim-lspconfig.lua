@@ -100,6 +100,11 @@ return {
 					},
 				},
 			},
+			clangd = {
+				cmd = { "clangd", "--query-driver=/usr/bin/gcc,/usr/bin/g++" }, -- Custom clangd setup
+				filetypes = { "c", "cpp" },
+				capabilities = capabilities,
+			},
 		}
 
 		require("mason").setup()
