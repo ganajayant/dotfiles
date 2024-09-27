@@ -1,10 +1,10 @@
 return {
 	{
-		"folke/tokyonight.nvim",
+		"dasupradyumna/midnight.nvim",
 		lazy = true,
 		priority = 1000,
 		init = function()
-			vim.cmd.colorscheme("tokyonight-night")
+			vim.cmd.colorscheme("midnight")
 			vim.cmd.hi("Comment gui=none")
 		end,
 	},

@@ -9,9 +9,8 @@ return {
 			},
 			options = {
 				icons_enabled = true,
-				theme = "tokyonight-night",
+				theme = "auto",
 				component_separators = "|",
-				section_separators = { left = "", right = "" },
 			},
 		})
 	end,
