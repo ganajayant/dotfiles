@@ -28,7 +28,7 @@ if command -v pip3 &>/dev/null; then
     alias pipi="pip3 install"
     alias pipup="pip3 list --format=freeze | cut -d = -f 1 | xargs pip3 install --upgrade"
     alias pipui="pip3 uninstall"
-    alias piprm="pip3 freeze | xargs pip3 uninstall -y"
+    alias piprm="pip freeze | cut -d "@" -f1 | xargs pip uninstall -y"
     alias pipv="virtualenv venv"
     alias pipa="source venv/bin/activate"
     alias piprq="pip3 freeze > requirements.txt"
