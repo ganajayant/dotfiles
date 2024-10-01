@@ -1,0 +1,9 @@
+ostream&
+operator<<(ostream& os, const vector<int>& vec)
+{
+    for (auto& it : vec) {
+	os << it << " ";
+    }
+    cout << "\n";
+    return os;
+}

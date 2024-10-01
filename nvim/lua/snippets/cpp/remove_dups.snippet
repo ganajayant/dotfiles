@@ -1,0 +1,7 @@
+template<typename T>
+void
+remove_dups(vector<T>& v)
+{
+    // NOTE:Assuming already sorted
+    v.resize(unique(v.begin(), v.end()) - v.begin());
+}

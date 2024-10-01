@@ -1,0 +1,16 @@
+template<typename T>
+T
+bin_exp(T base, int exp)
+{{
+    T current = 1;
+    while (exp) {{
+        if (exp & 1) {{
+            current = current * base;
+	    // current = _mod(current);
+        }}
+        base = base * base;
+	// base = _mod(base);
+        exp >>= 1;
+    }}
+    return current;
+}};

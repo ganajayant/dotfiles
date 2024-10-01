@@ -10,3 +10,8 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup("plugins")
+
+vim.schedule(function()
+	require("snippets.cpp")
+	require("snippets.cf-cpp")
+end)

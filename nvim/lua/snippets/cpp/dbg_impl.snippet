@@ -1,0 +1,11 @@
+template<typename... Args>
+void
+dbg_out_impl(char const* const func,
+             char const* const file,
+             int const& line,
+             Args&&... args)
+{{
+	std::cout << func << ' ' << file << ':' << line;
+	((std::cout << ' ' << args), ...) << '\n';
+}}
+#define dbg(...) dbg_out_impl(__func__, __FILE__, __LINE__, __VA_ARGS__)
