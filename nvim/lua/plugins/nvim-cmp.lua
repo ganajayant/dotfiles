@@ -18,6 +18,15 @@ return {
 					end,
 				},
 			},
+			config = function()
+				vim.api.nvim_create_autocmd("FileType", {
+					pattern = { "cpp", "c" },
+					callback = function()
+						require("snippets.cpp")
+						require("snippets.cf-cpp")
+					end,
+				})
+			end,
 		},
 		"saadparwaiz1/cmp_luasnip",
 		"hrsh7th/cmp-nvim-lsp",
