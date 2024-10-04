@@ -1,11 +1,10 @@
 [window]
-
 startup_mode = "Maximized"
 padding.x = 10
 padding.y = 10
 decorations = "Buttonless"
-[font]
 
+[font]
 size = 16
 normal.family = "Hack Nerd Font Mono"
 bold.family = "Hack Nerd Font Mono"
