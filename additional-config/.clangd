@@ -1,3 +1,4 @@
 CompileFlags:
   Add: 
     - "-I/Library/Developer/CommandLineTools/usr/include"
+    - "-std=c++20"
