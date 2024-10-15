@@ -39,6 +39,14 @@ if command -v nvim &>/dev/null; then
     alias vim="nvim"
 fi
 
+if command -v eza &>/dev/null; then
+    alias ls="eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions"
+fi
+
+if command -v zoxide &>/dev/null; then
+    alias cd="z"
+fi
+
 # System
 alias home="cd ~"
 alias c="clear"

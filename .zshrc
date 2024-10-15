@@ -22,11 +22,6 @@ setopt hist_ignore_dups
 setopt hist_find_no_dups
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
-# Eza
-if command -v eza &>/dev/null; then
-    alias ls="eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions"
-fi
-
 # Node Version Manager
 if command -v fnm &>/dev/null; then
     eval "$(fnm env --use-on-cd)"
@@ -38,6 +33,11 @@ fi
 # FuzzyFinder
 if command -v fzf &>/dev/null; then
     eval "$(fzf --zsh)"
+fi
+
+#Zoxide
+if command -v fzf &>/dev/null; then
+    eval "$(zoxide init zsh)"
 fi
 
 # ZSH Plugins
