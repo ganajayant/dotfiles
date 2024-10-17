@@ -2,7 +2,7 @@ return {
 	"folke/tokyonight.nvim",
 	priority = 1000,
 	config = function()
-		local transparent = false
+		local transparent = true
 		local bg = "#011628"
 		local bg_dark = "#011423"
 		local bg_highlight = "#143652"
