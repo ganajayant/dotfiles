@@ -35,11 +35,6 @@ if command -v fzf &>/dev/null; then
     eval "$(fzf --zsh)"
 fi
 
-#Zoxide
-if command -v fzf &>/dev/null; then
-    eval "$(zoxide init zsh)"
-fi
-
 # ZSH Plugins
 if [ -f /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
     source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
