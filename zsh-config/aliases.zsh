@@ -2,7 +2,7 @@
 if command -v brew &>/dev/null; then
     alias search="brew search"
     alias install="brew install"
-    alias update="brew update && brew upgrade && brew cleanup"
+    alias update="brew update && brew upgrade && brew cleanup --prune=all && brew autoremove"
     alias uninstall="brew uninstall"
     alias list="brew list"
 fi
@@ -22,16 +22,16 @@ if command -v npm &>/dev/null; then
     alias npmui="npm uninstall"
 fi
 
-if command -v pip3 &>/dev/null; then
-    alias pipimp="pip3 install ipykernel matplotlib numpy pandas scikit-learn scipy seaborn torch torchvision torchaudio virtualenv && pip3 install --upgrade certifi"
-    alias pips="pip3 search"
-    alias pipi="pip3 install"
-    alias pipup="pip3 list --format=freeze | cut -d = -f 1 | xargs pip3 install --upgrade"
-    alias pipui="pip3 uninstall"
+if command -v pip &>/dev/null; then
+    alias pipimp="pip install ipykernel matplotlib numpy pandas scikit-learn scipy seaborn torch torchvision torchaudio virtualenv && pip install --upgrade certifi"
+    alias pips="pip search"
+    alias pipi="pip install"
+    alias pipup="pip list --format=freeze | cut -d = -f 1 | xargs pip install --upgrade"
+    alias pipui="pip uninstall"
     alias piprm="pip freeze | cut -d "@" -f1 | xargs pip uninstall -y"
     alias pipv="virtualenv venv"
     alias pipa="source venv/bin/activate"
-    alias piprq="pip3 freeze > requirements.txt"
+    alias piprq="pip freeze > requirements.txt"
 fi
 
 if command -v nvim &>/dev/null; then
@@ -44,6 +44,7 @@ if command -v eza &>/dev/null; then
 fi
 
 # System
+alias xargs="xargs "
 alias home="cd ~"
 alias c="clear"
 alias t="touch"
@@ -69,7 +70,3 @@ if command -v git &>/dev/null; then
     alias gclone="git clone"
     alias gr="git remote add origin"
 fi
-
-# Web
-alias brave="open -a 'Brave Browser' --args"
-alias incognito="open -a 'Brave Browser' -n --args --incognito"

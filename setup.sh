@@ -12,6 +12,8 @@ create_symlink() {
     fi
 }
 
+create_symlink ~/dotfiles/.zprofile ~/.zprofile
+
 create_symlink ~/dotfiles/.zshrc ~/.zshrc
 
 create_symlink ~/dotfiles/additional-config/.clang-format ~/.clang-format

@@ -11,6 +11,25 @@ count() {
     ls -1 "$@" | wc -l
 }
 
+cw() {
+    if (($# != 1)); then
+        echo "Invalid number of parameters. Usage: cw <SSID>"
+        return 1
+    fi
+    ssid=$1
+    if [ "$ssid" = "G" ]; then
+        ssid="GUEST_SECURED"
+    elif [ "$ssid" = "C" ]; then
+        ssid="CAMPUS_SECURED"
+    fi
+    networksetup -setairportnetwork en0 "$ssid"
+    if [ $? -eq 0 ]; then
+        echo "Successfully connected to $ssid"
+    else
+        echo "Failed to connect to $ssid"
+    fi
+}
+
 generate_maven_project() {
     if ! command -v mvn &>/dev/null; then
         echo "Maven is not installed. Please install Maven before running this script."
@@ -50,6 +69,7 @@ push() {
 
 reload() {
     source ~/.zshrc
+    source ~/.zprofile
     echo "ZSH configuration reloaded."
 }
 
