@@ -70,3 +70,8 @@ if command -v git &>/dev/null; then
     alias gclone="git clone"
     alias gr="git remote add origin"
 fi
+
+if command -v timer &>/dev/null && command -v terminal-notifier &>/dev/null; then
+    alias work="timer 60m && terminal-notifier -message 'Pomodoro' -title 'Work Timer is up! Take a Break 😊' -sound Crystal"
+    alias rest="timer 10m && terminal-notifier -message 'Pomodoro' -title 'Break is over! Get back to work 😬' -sound Crystal"
+fi
