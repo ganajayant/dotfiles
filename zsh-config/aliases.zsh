@@ -29,8 +29,8 @@ if command -v pip &>/dev/null; then
     alias pipup="pip list --format=freeze | cut -d = -f 1 | xargs pip install --upgrade"
     alias pipui="pip uninstall"
     alias piprm="pip freeze | cut -d "@" -f1 | xargs pip uninstall -y"
-    alias pipv="virtualenv venv"
-    alias pipa="source venv/bin/activate"
+    alias pipv="python -m venv env"
+    alias pipa="source env/bin/activate"
     alias piprq="pip freeze > requirements.txt"
 fi
 
