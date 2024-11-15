@@ -2,9 +2,10 @@
 if command -v brew &>/dev/null; then
     alias search="brew search"
     alias install="brew install"
-    alias update="brew update && brew upgrade && brew cleanup --prune=all && brew autoremove"
+    alias update="brew update && brew upgrade"
     alias uninstall="brew uninstall"
     alias list="brew list"
+    alias cleanup="brew cleanup --prune=all && brew autoremove"
 fi
 
 if command -v mas &>/dev/null; then
@@ -12,9 +13,13 @@ if command -v mas &>/dev/null; then
     alias updatea="mas upgrade"
     alias searcha="mas search"
     alias uninstalla="mas uninstall"
+fi
+
+if command -v mas &>/dev/null && command -v brew &>/dev/null; then
     alias updateall="update && updatea"
 fi
 
+# NPM aliases
 if command -v npm &>/dev/null; then
     alias npms="npm search"
     alias npmi="npm install"
@@ -22,6 +27,7 @@ if command -v npm &>/dev/null; then
     alias npmui="npm uninstall"
 fi
 
+# Pip aliases
 if command -v pip &>/dev/null; then
     alias pipimp="pip install ipykernel matplotlib numpy pandas scikit-learn scipy seaborn torch torchvision torchaudio virtualenv && pip install --upgrade certifi"
     alias pips="pip search"
@@ -34,6 +40,7 @@ if command -v pip &>/dev/null; then
     alias piprq="pip freeze > requirements.txt"
 fi
 
+# VI Editor
 if command -v nvim &>/dev/null; then
     alias vi="nvim"
     alias vim="nvim"
@@ -69,9 +76,4 @@ if command -v git &>/dev/null; then
     alias gpush="git push -u origin"
     alias gclone="git clone"
     alias gr="git remote add origin"
-fi
-
-if command -v timer &>/dev/null && command -v terminal-notifier &>/dev/null; then
-    alias work="timer 60m && terminal-notifier -message 'Pomodoro' -title 'Work Timer is up! Take a Break 😊' -sound Crystal"
-    alias rest="timer 10m && terminal-notifier -message 'Pomodoro' -title 'Break is over! Get back to work 😬' -sound Crystal"
 fi
