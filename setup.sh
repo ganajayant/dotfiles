@@ -24,4 +24,6 @@ create_symlink ~/dotfiles/nvim ~/.config/nvim
 
 create_symlink ~/dotfiles/alacritty ~/.config/alacritty
 
+create_symlink ~/dotfiles/aerospace/.aerospace.toml ~/.aerospace.toml
+
 export PATH=$HOME/bin:/usr/local/bin:$PATHcreate_symlink ~/dotfiles/additional-config/.tmux.conf ~/.tmux.conf
