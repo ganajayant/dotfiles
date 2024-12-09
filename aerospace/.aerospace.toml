@@ -42,7 +42,7 @@ outer.top =        0
 outer.right =      0
 
 [mode.main.binding]
-alt-ctrl-shift-f = 'fullscreen'
+alt-f = 'fullscreen'
 alt-ctrl-f = 'layout floating'
 
 alt-shift-left = 'join-with left'
