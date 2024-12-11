@@ -2,6 +2,8 @@
 
 Welcome to my dotfiles repository! This repository contains my personalized configuration files for various command-line tools and applications. With these dotfiles, I aim to streamline my development environment and enhance productivity.
 
+![alt text](./assests/image.png)
+
 ## Features
 - **Aliases:** Shortcuts for commonly used commands and custom command shortcuts.
 - **Functions:** Custom shell functions to automate tasks and improve workflow.
