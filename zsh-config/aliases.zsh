@@ -73,8 +73,3 @@ if command -v git &>/dev/null; then
     alias gclone="git clone"
     alias gr="git remote add origin"
 fi
-
-# LazyGit
-if command -v lazygit &>/dev/null; then
-    alias lg="lazygit"
-fi

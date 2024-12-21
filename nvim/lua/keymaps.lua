@@ -12,7 +12,7 @@ keymap.set("n", "<leader>P", [["+P]])
 
 keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
-keymap.set("i", "jk", "<Esc>")
+keymap.set("i", "<C-c>", "<Esc>")
 keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 

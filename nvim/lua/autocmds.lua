@@ -5,3 +5,10 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 		vim.highlight.on_yank()
 	end,
 })
+
+vim.api.nvim_create_autocmd("BufWritePre", {
+	desc = "Remove trailing whitespace on save",
+	group = vim.api.nvim_create_augroup("AutoGroupCmd", { clear = true }),
+	pattern = "*",
+	command = [[%s/\s\+$//e]],
+})
