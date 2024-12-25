@@ -68,10 +68,10 @@ outer.right =      0
 alt-f = 'fullscreen'
 alt-ctrl-f = 'layout floating'
 
-alt-shift-left = 'join-with left'
-alt-shift-down = 'join-with down'
-alt-shift-up = 'join-with up'
-alt-shift-right = 'join-with right'
+alt-shift-a = 'join-with left'
+alt-shift-s = 'join-with down'
+alt-shift-w = 'join-with up'
+alt-shift-d = 'join-with right'
 
 alt-slash = 'layout tiles horizontal vertical'
 alt-comma = 'layout accordion horizontal vertical'

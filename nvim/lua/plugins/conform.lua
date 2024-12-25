@@ -23,7 +23,6 @@ return {
 		end,
 		formatters_by_ft = {
 			lua = { "stylua" },
-			java = { "lua-language-server" },
 			zsh = { "shfmt" },
 			sh = { "shfmt" },
 		},
