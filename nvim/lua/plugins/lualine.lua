@@ -9,7 +9,7 @@ return {
 			},
 			options = {
 				icons_enabled = true,
-				theme = "auto",
+				theme = "tokyonight-night",
 				component_separators = "|",
 			},
 		})

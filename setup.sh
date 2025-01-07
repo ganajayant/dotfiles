@@ -22,7 +22,7 @@ create_symlink ~/dotfiles/additional-config/.clangd ~/.clangd
 
 create_symlink ~/dotfiles/nvim ~/.config/nvim
 
-create_symlink ~/dotfiles/alacritty ~/.config/alacritty
+create_symlink ~/dotfiles/ghostty/ ~/.config/ghostty/
 
 create_symlink ~/dotfiles/aerospace/.aerospace.toml ~/.aerospace.toml
 

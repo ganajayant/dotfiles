@@ -143,6 +143,7 @@ return {
 			"clangd",
 			"jdtls",
 			"lua-language-server",
+			"ruff",
 			"shfmt",
 			"stylua",
 			"typescript-language-server",
