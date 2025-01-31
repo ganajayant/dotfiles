@@ -24,8 +24,8 @@ vim.keymap.set("i", "<C-c>", function()
 end)
 
 local load_snippet = function(file_name)
-	local path = "/Users/ganajayantsigadam/.config/nvim/lua/snippets/"
-	path = path .. file_name
+	local home = os.getenv("HOME")
+	local path = home .. "/.config/nvim/lua/snippets/" .. file_name
 	local f = io.open(path)
 	assert(f)
 	local fstr = f:read("*a")

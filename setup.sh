@@ -1,29 +1,27 @@
 #!/bin/zsh
 
 create_symlink() {
-    src=$1
-    dest=$2
+    local src=$1
+    local dest=$2
+
     if [ -L "$dest" ]; then
         echo "Symbolic link already exists: $dest"
     elif [ -e "$dest" ]; then
-        echo "File already exists and is not a symbolic link: $dest"
+        echo "File already exists and is not a symlink: $dest"
     else
         ln -s "$src" "$dest" && echo "Created symlink: $dest -> $src"
     fi
 }
 
-create_symlink ~/dotfiles/.zprofile ~/.zprofile
+create_symlink "$HOME/dotfiles/.zprofile" "$HOME/.zprofile"
+create_symlink "$HOME/dotfiles/.zshrc" "$HOME/.zshrc"
+create_symlink "$HOME/dotfiles/additional-config/.clang-format" "$HOME/.clang-format"
+create_symlink "$HOME/dotfiles/additional-config/.clangd" "$HOME/.clangd"
+create_symlink "$HOME/dotfiles/nvim" "$HOME/.config/nvim"
+create_symlink "$HOME/dotfiles/ghostty" "$HOME/.config/ghostty"
+create_symlink "$HOME/dotfiles/aerospace/.aerospace.toml" "$HOME/.aerospace.toml"
+create_symlink "$HOME/dotfiles/additional-config/.tmux.conf" "$HOME/.tmux.conf"
 
-create_symlink ~/dotfiles/.zshrc ~/.zshrc
+export PATH="$HOME/bin:/usr/local/bin:$PATH"
 
-create_symlink ~/dotfiles/additional-config/.clang-format ~/.clang-format
-
-create_symlink ~/dotfiles/additional-config/.clangd ~/.clangd
-
-create_symlink ~/dotfiles/nvim ~/.config/nvim
-
-create_symlink ~/dotfiles/ghostty/ ~/.config/ghostty/
-
-create_symlink ~/dotfiles/aerospace/.aerospace.toml ~/.aerospace.toml
-
-export PATH=$HOME/bin:/usr/local/bin:$PATHcreate_symlink ~/dotfiles/additional-config/.tmux.conf ~/.tmux.conf
+echo "All symlinks checked/created, and PATH updated!"

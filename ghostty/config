@@ -1,3 +1,5 @@
-window-padding-color = background
-theme = tokyonight_night
 font-size = 16
+macos-titlebar-style = hidden
+mouse-hide-while-typing = true
+theme = tokyonight_night
+window-padding-color = background

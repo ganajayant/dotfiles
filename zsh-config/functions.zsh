@@ -1,35 +1,17 @@
 # Functions
 mkcd() {
-    if (($# != 1)); then
+    if [[ $# -ne 1 ]]; then
         echo "Invalid number of parameters. Usage: mkcd <DIR_PATH>"
         return 1
     fi
-    mkdir -p "$@" && cd "$@" || return 1
+    mkdir -p "$1" && cd "$1" || return 1
 }
 
 count() {
-    ls -1 "$@" | wc -l
+    ls -1 "$@" 2>/dev/null | wc -l
 }
 
-cw() {
-    if (($# != 1)); then
-        echo "Invalid number of parameters. Usage: cw <SSID>"
-        return 1
-    fi
-    ssid=$1
-    if [ "$ssid" = "G" ]; then
-        ssid="GUEST_SECURED"
-    elif [ "$ssid" = "C" ]; then
-        ssid="CAMPUS_SECURED"
-    fi
-    networksetup -setairportnetwork en0 "$ssid"
-    if [ $? -eq 0 ]; then
-        echo "Successfully connected to $ssid"
-    else
-        echo "Failed to connect to $ssid"
-    fi
-}
-
+# Generate a Maven project
 generate_maven_project() {
     if ! command -v mvn &>/dev/null; then
         echo "Maven is not installed. Please install Maven before running this script."
@@ -41,80 +23,68 @@ generate_maven_project() {
         return 1
     fi
 
-    local groupId="com.example"
-    local artifactId=$1
-
-    if [[ $# -eq 2 ]]; then
-        groupId=$1
-        artifactId=$2
-    else
-        artifactId=$1
-    fi
+    local groupId=${1:-"com.example"}
+    local artifactId=${2:-$1}
 
     mvn archetype:generate \
-        -DgroupId=$groupId \
-        -DartifactId=$artifactId \
+        -DgroupId="$groupId" \
+        -DartifactId="$artifactId" \
         -DarchetypeCatalog=internal \
         -DinteractiveMode=false
 }
 
+# Git push with automatic commit
 push() {
-    if [ $# -eq 0 ]; then
+    if [[ $# -eq 0 ]]; then
         echo "Commit message is required."
         return 1
     fi
     find . -name '.DS_Store' -type f -delete
-    git add . && git commit -m "$@" && git push origin
+    git add . && git commit -m "$*" && git push origin
 }
 
+# Reload Zsh configuration
 reload() {
-    source ~/.zshrc
-    source ~/.zprofile
+    source ~/.zshrc && source ~/.zprofile
     echo "ZSH configuration reloaded."
 }
 
+# File size summary
 fs() {
-    if [[ -n "$@" ]]; then
-        du -sh -- "$@"
-    else
-        du -sh ./*
-    fi
+    du -sh -- "${@:-./*}"
 }
 
+# Clone a Git repository and open in VS Code
 clonecd() {
-    if (($# != 1)); then
+    if [[ $# -ne 1 ]]; then
         echo "Invalid number of parameters. Usage: clonecd <REPO_URL>"
         return 1
     fi
-    git clone "$@" && cd "$(basename "$@" .git)" && code .
+    git clone "$1" && cd "$(basename "$1" .git)" && code .
 }
 
+# Move up multiple directories
 up() {
-    if (($# == 0)); then
-        echo "Counter is required."
+    if [[ $# -eq 0 || $1 -lt 1 ]]; then
+        echo "Usage: up <N>"
         return 1
     fi
-    local counter=${1:-1}
-    local dirup="../"
-    local out=""
-    while ((counter > 0)); do
-        let counter--
-        out="${out}$dirup"
-    done
-    cd $out || return 1
+    local out=$(printf '../%.0s' $(seq 1 "$1"))
+    cd "$out" || return 1
 }
 
-function expand-alias() {
+# Expand alias on space
+expand-alias() {
     zle _expand_alias
     zle self-insert
 }
 zle -N expand-alias
 bindkey -M main ' ' expand-alias
 
+# Custom FZF previews
 _fzf_comprun() {
     local command=$1
     shift
-
     case "$command" in
     cd) fzf --preview 'eza --tree --color=always {} | head -200' "$@" ;;
     export | unset) fzf --preview "eval 'echo $'{}" "$@" ;;
