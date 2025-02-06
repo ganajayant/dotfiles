@@ -61,6 +61,7 @@ alias mv="mv -v"
 alias cp="cp -rv"
 alias rm="rm -Irv"
 alias untar="tar -zxvf"
+alias dockreset="sudo find 2>/dev/null /private/var/folders/ -type d -name com.apple.dock.launchpad -exec rm -rf {} +; killall Dock"
 
 # Git
 if command -v git &>/dev/null; then
