@@ -100,7 +100,6 @@ alt-shift-5 = 'move-node-to-workspace 5 --focus-follows-window'
 alt-tab = 'workspace-back-and-forth'
 alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 
-
 alt-shift-semicolon = 'mode service'
 alt-shift-enter = 'mode apps'
 
