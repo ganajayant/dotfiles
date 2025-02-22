@@ -23,8 +23,9 @@ fi
 if command -v npm &>/dev/null; then
     alias npms="npm search"
     alias npmi="npm install"
-    alias npmup="sudo npm upgrade -g"
+    alias npmup="npm upgrade -g"
     alias npmui="npm uninstall"
+    alias npmperm="sudo chown -R $(whoami) $HOME/.local/share/fnm"
 fi
 
 # Pip aliases

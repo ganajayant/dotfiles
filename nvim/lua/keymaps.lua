@@ -12,6 +12,7 @@ keymap.set({ "n", "v" }, "<leader>p", [["+p]], { desc = "Paste from system clipb
 keymap.set("n", "<leader>P", [["+P]], { desc = "Paste before from system clipboard" })
 
 keymap.set("n", "J", "mzJ`z", { desc = "Join lines and keep cursor centered" })
+keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true, desc = "Make it executable" })
 
 keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Scroll down and keep cursor centered" })
 keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Scroll up and keep cursor centered" })
