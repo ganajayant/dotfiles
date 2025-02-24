@@ -42,7 +42,7 @@ if command -v brew &>/dev/null; then
 fi
 
 # Custom Aliases, Functions & Exports
-config_dir=~/dotfiles/zsh-config
+config_dir=~/dotfiles/zsh
 if [[ -d "$config_dir" ]]; then
     for config_file in "$config_dir"/{aliases,exports,functions}.zsh; do
         [[ -f "$config_file" ]] && source "$config_file"
