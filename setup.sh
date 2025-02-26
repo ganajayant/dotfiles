@@ -19,7 +19,7 @@ setup_macos_preferences() {
 
     # Keyboard settings
     defaults write -g InitialKeyRepeat -int 10
-    defaults write -g KeyRepeat -int 1
+    defaults write -g KeyRepeat -int 2
     defaults write -g ApplePressAndHoldEnabled -bool false
 
     # Suppress login welcome message

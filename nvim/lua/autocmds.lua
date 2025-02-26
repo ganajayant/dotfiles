@@ -12,3 +12,12 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 	pattern = "*",
 	command = [[%s/\s\+$//e]],
 })
+
+vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
+	pattern = { "docker-compose.yaml", "compose.yaml" },
+	group = vim.api.nvim_create_augroup("ft_lsp_group", { clear = true }),
+	desc = "Fix the issue where the LSP does not start with docker-compose.",
+	callback = function()
+		vim.opt.filetype = "yaml.docker-compose"
+	end,
+})
