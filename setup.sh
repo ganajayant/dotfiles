@@ -74,6 +74,10 @@ install_homebrew() {
         log "Error: Brewfile not found at $DOTFILES_DIR/brew/Brewfile"
     fi
 }
+additional_installs {
+    log "Installing additional plugins ..."
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+}
 
 # Improved symlink function
 create_symlink() {
@@ -136,6 +140,7 @@ main() {
     setup_macos_preferences
     install_xcode_tools
     install_homebrew
+    additional_installs
     setup_symlinks
     update_path
     log "Setup completed successfully!"
