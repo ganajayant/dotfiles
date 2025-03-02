@@ -1,10 +1,9 @@
 return {
 	"danymat/neogen",
-	config = function()
-		require("neogen").setup({
-			snippet_engine = "luasnip",
-		})
-	end,
+	dependencies = "L3MON4D3/LuaSnip",
+	opts = {
+		snippet_engine = "luasnip",
+	},
 	keys = {
 		{
 			"<leader>cn",

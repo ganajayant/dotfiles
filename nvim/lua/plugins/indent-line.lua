@@ -1,8 +1,5 @@
 return {
 	"lukas-reineke/indent-blankline.nvim",
-	config = function()
-		require("ibl").overwrite({
-			exclude = { filetypes = {} },
-		})
-	end,
+	main = "ibl",
+	opts = {},
 }
