@@ -30,7 +30,7 @@ fi
 
 # Pip aliases
 if command -v pip &>/dev/null; then
-    alias pipimp="pip install ipykernel matplotlib numpy pandas scikit-learn scipy seaborn torch torchvision torchaudio virtualenv && pip install --upgrade certifi"
+    alias pipimp="pip install ipykernel matplotlib nltk numpy pandas scikit-learn scipy seaborn spacy torch torchvision torchaudio virtualenv && pip install --upgrade certifi"
     alias pips="pip search"
     alias pipi="pip install"
     alias pipup="pip list --format=freeze | cut -d = -f 1 | xargs pip install --upgrade"
