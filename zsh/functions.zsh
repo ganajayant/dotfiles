@@ -43,6 +43,30 @@ push() {
     git add . && git commit -m "$*" && git push origin
 }
 
+# Get App Bundle ID
+get_app_id() {
+    local app_name="$1"
+    if [[ -z "$app_name" ]]; then
+        echo "Usage: get_app_id \"Application Name\""
+        return 1
+    fi
+
+    local app_id
+    app_id=$(osascript -e "try
+    id of app \"$app_name\"
+  on error errMsg
+    return \"ERROR: \" & errMsg
+  end try")
+
+    if [[ "$app_id" == ERROR:* ]]; then
+        echo "$app_id"
+        return 1
+    else
+        echo "$app_id" | pbcopy
+        echo "Copied app ID of \"$app_name\" to clipboard: $app_id"
+    fi
+}
+
 # Reload Zsh configuration
 reload() {
     source ~/.zshrc && source ~/.zprofile

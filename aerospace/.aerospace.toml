@@ -22,7 +22,7 @@ if.app-id = 'com.microsoft.VSCode'
 run = 'move-node-to-workspace 2'
 
 [[on-window-detected]]
-if.app-id = 'md.obsidian'
+if.app-id = 'notion.id'
 run = 'move-node-to-workspace 3'
 
 [[on-window-detected]]
