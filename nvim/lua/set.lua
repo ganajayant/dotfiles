@@ -29,6 +29,7 @@ vim.opt.inccommand = "split"
 vim.opt.cursorline = true
 vim.opt.scrolloff = 18
 vim.opt.termguicolors = true
+vim.opt.fillchars:append({ eob = " " })
 
 vim.opt.hlsearch = true
 vim.opt.incsearch = true

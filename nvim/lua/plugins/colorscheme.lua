@@ -1,7 +1,7 @@
 return {
-	"folke/tokyonight.nvim",
+	"sponkurtus2/angelic.nvim",
 	priority = 1000,
 	config = function()
-		vim.cmd.colorscheme("tokyonight-night")
+		vim.cmd.colorscheme("angelic")
 	end,
 }
