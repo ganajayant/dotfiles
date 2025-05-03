@@ -1,29 +1,53 @@
 #!/bin/zsh
 
-if [ -t 1 ]; then
-    selected=$(find ~/dotfiles ~/Documents -type d | fzf)
-    if [[ -z $selected ]]; then
-        return 0
-    fi
-
-    selected_name=$(basename "$selected" | tr -cs '[:alnum:]' '_')
-    tmux_running=$(pgrep tmux)
-
-    if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
-        tmux new-session -s "$selected_name" -c "$selected"
-        return 0
-    fi
-
-    if ! tmux has-session -t="$selected_name" 2>/dev/null; then
-        tmux new-session -ds "$selected_name" -c "$selected"
-    fi
-
+switch_to() {
     if [[ -z $TMUX ]]; then
-        tmux attach-session -t "$selected_name"
+        tmux attach-session -t "$1"
     else
-        tmux switch-client -t "$selected_name"
+        tmux switch-client -t "$1"
     fi
+}
+
+has_session() {
+    tmux has-session -t "$1" 2>/dev/null
+}
+
+hydrate() {
+    if [ -f "$2/.tmux-sessionizer" ]; then
+        tmux send-keys -t "$1:main" "source $2/.tmux-sessionizer" C-m
+    elif [ -f "$HOME/.tmux-sessionizer" ]; then
+        tmux send-keys -t "$1:main" "source $HOME/.tmux-sessionizer" C-m
+    fi
+}
+
+if [[ $# -eq 1 ]]; then
+    selected=$1
 else
-    echo "Not running in a terminal. Please run in a terminal environment."
-    return 1
+    selected=$(find ~/dotfiles ~/Documents -type d | fzf)
 fi
+
+if [[ -z $selected ]]; then
+    exit 0
+fi
+
+selected_name=$(basename "$selected" | tr . _)
+tmux_running=$(pgrep tmux)
+
+if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
+    # Start new session and return to 'main' window after creating 'scratch'
+    tmux new-session -s "$selected_name" -c "$selected" -n main \; \
+        new-window -n scratch -c "$selected" \; \
+        select-window -t "$selected_name:main"
+    hydrate "$selected_name" "$selected"
+    exit 0
+fi
+
+if ! has_session "$selected_name"; then
+    # Detached session creation
+    tmux new-session -ds "$selected_name" -c "$selected" -n main
+    tmux new-window -t "$selected_name" -n scratch -c "$selected"
+    tmux select-window -t "$selected_name:main"
+    hydrate "$selected_name" "$selected"
+fi
+
+switch_to "$selected_name"
