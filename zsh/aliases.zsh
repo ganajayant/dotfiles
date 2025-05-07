@@ -82,4 +82,5 @@ if command -v git &>/dev/null; then
     alias gpush="git push -u origin"
     alias gclone="git clone"
     alias gr="git remote add origin"
+    alias ggraph="git log --oneline --graph --all"
 fi

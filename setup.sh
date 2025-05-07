@@ -75,11 +75,6 @@ install_homebrew() {
     fi
 }
 
-additional_installs {
-    log "Installing additional plugins ..."
-    # git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-}
-
 # Improved symlink function
 create_symlink() {
     local src=$1
@@ -122,7 +117,7 @@ setup_symlinks() {
     create_symlink "$DOTFILES_DIR/ghostty" "$CONFIG_DIR/ghostty"
     create_symlink "$DOTFILES_DIR/aerospace/.aerospace.toml" "$HOME/.aerospace.toml"
     create_symlink "$DOTFILES_DIR/tmux/.tmux.conf" "$HOME/.tmux.conf"
-
+    create_symlink "$DOTFILES_DIR/.gitconfig" "$HOME/.gitconfig"
     # Sioyek PDF viewer
     create_symlink "$DOTFILES_DIR/sioyek/prefs_user.config" "$HOME/Library/Application Support/sioyek/prefs_user.config"
     create_symlink "$DOTFILES_DIR/sioyek/prefs.config" "/Applications/sioyek.app/Contents/MacOS/prefs.config"
@@ -141,7 +136,6 @@ main() {
     setup_macos_preferences
     install_xcode_tools
     install_homebrew
-    additional_installs
     setup_symlinks
     update_path
     log "Setup completed successfully!"
