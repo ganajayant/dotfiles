@@ -23,26 +23,34 @@ run = 'move-node-to-workspace 2'
 
 [[on-window-detected]]
 if.app-id = 'notion.id'
+run = 'move-node-to-workspace n'
+
+[[on-window-detected]]
+if.app-id = 'com.electron.dockerdesktop'
+run = 'move-node-to-workspace 3'
+
+[[on-window-detected]]
+if.app-id = 'com.postmanlabs.mac'
 run = 'move-node-to-workspace 3'
 
 [[on-window-detected]]
 if.app-id = 'com.spotify.client'
-run = 'move-node-to-workspace 4'
+run = 'move-node-to-workspace m'
 
 [[on-window-detected]]
 if.app-id = 'com.apple.mail'
-run = 'move-node-to-workspace 5'
+run = 'move-node-to-workspace 4'
 
 [[on-window-detected]]
 if.app-id = 'com.apple.iCal'
-run = 'move-node-to-workspace 5'
+run = 'move-node-to-workspace 4'
 
 [[on-window-detected]]
-if.app-name-regex-substring = 'telegram'
+if.app-id = 'ru.keepcoder.Telegram'
 run = 'layout floating'
 
 [[on-window-detected]]
-if.app-name-regex-substring = 'finder'
+if.app-id = 'com.apple.finder'
 run = 'layout floating'
 
 [key-mapping]
@@ -86,12 +94,16 @@ alt-2 = 'workspace 2'
 alt-3 = 'workspace 3'
 alt-4 = 'workspace 4'
 alt-5 = 'workspace 5'
+alt-m = 'workspace m'
+alt-n = 'workspace n'
 
 alt-shift-1 = 'move-node-to-workspace 1 --focus-follows-window'
 alt-shift-2 = 'move-node-to-workspace 2 --focus-follows-window'
 alt-shift-3 = 'move-node-to-workspace 3 --focus-follows-window'
 alt-shift-4 = 'move-node-to-workspace 4 --focus-follows-window'
 alt-shift-5 = 'move-node-to-workspace 5 --focus-follows-window'
+alt-shift-m = 'move-node-to-workspace m --focus-follows-window'
+alt-shift-n = 'move-node-to-workspace n --focus-follows-window'
 
 alt-tab = 'workspace-back-and-forth'
 alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
@@ -104,6 +116,8 @@ alt-shift-enter = 'mode apps'
 2 = 'main'
 3 = 'main'
 4 = 'main'
+m = "main"
+n = "main"
 5 = 'secondary'
 
 [mode.service.binding]
