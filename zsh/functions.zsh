@@ -33,16 +33,6 @@ generate_maven_project() {
         -DinteractiveMode=false
 }
 
-# Git push with automatic commit
-push() {
-    if [[ $# -eq 0 ]]; then
-        echo "Commit message is required."
-        return 1
-    fi
-    find . -name '.DS_Store' -type f -delete
-    git add . && git commit -m "$*" && git push origin
-}
-
 # Get App Bundle ID
 get_app_id() {
     local app_name="$1"

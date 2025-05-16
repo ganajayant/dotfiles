@@ -1,17 +1,11 @@
 # Update Packages
 if command -v brew &>/dev/null; then
-    alias search="brew search"
-    alias install="brew install"
     alias update="brew update && brew upgrade"
-    alias uninstall="brew uninstall"
-    alias list="brew list"
     alias cleanup="brew cleanup --prune=all && brew autoremove"
 fi
 
 if command -v mas &>/dev/null; then
-    alias installa="mas install"
     alias updatea="mas upgrade"
-    alias searcha="mas search"
     alias uninstalla="mas uninstall"
 fi
 
@@ -21,10 +15,7 @@ fi
 
 # NPM aliases
 if command -v npm &>/dev/null; then
-    alias npms="npm search"
-    alias npmi="npm install"
     alias npmup="npm upgrade -g"
-    alias npmui="npm uninstall"
     alias npmperm="sudo chown -R $(whoami) $HOME/.local/share/fnm"
     alias npmcache="npm cache clean --force"
 fi
@@ -32,10 +23,7 @@ fi
 # Pip aliases
 if command -v pip &>/dev/null; then
     alias pipimp="pip install ipykernel matplotlib nltk numpy pandas scikit-learn scipy seaborn spacy torch torchvision torchaudio virtualenv && pip install --upgrade certifi"
-    alias pips="pip search"
-    alias pipi="pip install"
     alias pipup="pip list --format=freeze | cut -d = -f 1 | xargs pip install --upgrade"
-    alias pipui="pip uninstall"
     alias piprm="pip freeze | cut -d "@" -f1 | xargs pip uninstall -y"
     alias pipv="python -m venv env"
     alias pipa="source env/bin/activate"
@@ -61,26 +49,15 @@ fi
 
 # System
 alias xargs="xargs "
-alias home="cd ~"
-alias c="clear"
-alias t="touch"
 alias e="exit"
 alias la="ls -A"
 alias mv="mv -v"
 alias cp="cp -rv"
 alias rm="rm -Irv"
 alias untar="tar -zxvf"
-alias dockreset="sudo find 2>/dev/null /private/var/folders/ -type d -name com.apple.dock.launchpad -exec rm -rf {} +; killall Dock"
+alias dock="sudo find 2>/dev/null /private/var/folders/ -type d -name com.apple.dock.launchpad -exec rm -rf {} +; killall Dock"
 
 # Git
 if command -v git &>/dev/null; then
-    alias gi="git init"
-    alias gs="git status"
-    alias ga="git add"
-    alias gc="git commit -m"
-    alias gpull="git pull --rebase origin"
-    alias gpush="git push -u origin"
-    alias gclone="git clone"
-    alias gr="git remote add origin"
     alias ggraph="git log --oneline --graph --all"
 fi

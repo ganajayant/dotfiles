@@ -10,7 +10,7 @@ brew "mas"
 brew "openjdk"
 brew "maven"
 brew "neovim"
-brew "ollama", restart_service: :changed
+brew "ollama"
 brew "ripgrep"
 brew "telnet"
 brew "tmux"

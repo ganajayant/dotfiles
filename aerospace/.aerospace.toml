@@ -23,7 +23,7 @@ run = 'move-node-to-workspace 2'
 
 [[on-window-detected]]
 if.app-id = 'notion.id'
-run = 'move-node-to-workspace n'
+run = 'move-node-to-workspace 3'
 
 [[on-window-detected]]
 if.app-id = 'com.electron.dockerdesktop'
@@ -95,7 +95,6 @@ alt-3 = 'workspace 3'
 alt-4 = 'workspace 4'
 alt-5 = 'workspace 5'
 alt-m = 'workspace m'
-alt-n = 'workspace n'
 
 alt-shift-1 = 'move-node-to-workspace 1 --focus-follows-window'
 alt-shift-2 = 'move-node-to-workspace 2 --focus-follows-window'
@@ -103,7 +102,6 @@ alt-shift-3 = 'move-node-to-workspace 3 --focus-follows-window'
 alt-shift-4 = 'move-node-to-workspace 4 --focus-follows-window'
 alt-shift-5 = 'move-node-to-workspace 5 --focus-follows-window'
 alt-shift-m = 'move-node-to-workspace m --focus-follows-window'
-alt-shift-n = 'move-node-to-workspace n --focus-follows-window'
 
 alt-tab = 'workspace-back-and-forth'
 alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
@@ -117,7 +115,6 @@ alt-shift-enter = 'mode apps'
 3 = 'main'
 4 = 'main'
 m = "main"
-n = "main"
 5 = 'secondary'
 
 [mode.service.binding]
