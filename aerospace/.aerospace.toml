@@ -114,15 +114,14 @@ alt-tab = 'workspace-back-and-forth'
 alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 
 alt-shift-semicolon = 'mode service'
-alt-shift-enter = 'mode apps'
 
 [workspace-to-monitor-force-assignment]
 1 = 'main'
 2 = 'main'
 3 = 'main'
 4 = 'main'
-m = "main"
-r = "main"
+m = 'main'
+r = 'main'
 5 = 'secondary'
 
 [mode.service.binding]
