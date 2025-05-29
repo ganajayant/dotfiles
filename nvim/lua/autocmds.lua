@@ -21,3 +21,11 @@ vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
 		vim.opt.filetype = "yaml.docker-compose"
 	end,
 })
+
+vim.api.nvim_create_autocmd("VimEnter", {
+	callback = function()
+		if vim.fn.expand("%") == "" then
+			vim.cmd("Explore")
+		end
+	end,
+})

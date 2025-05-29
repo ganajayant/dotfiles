@@ -34,8 +34,8 @@ cask "qbittorrent"
 cask "raycast"
 cask "spotify"
 cask "visual-studio-code"
-mas "Flow", id: 1423210932
 mas "Telegram", id: 747648890
+mas "TickTick", id: 966085870
 vscode "aaron-bond.better-comments"
 vscode "charliermarsh.ruff"
 vscode "cschlosser.doxdocgen"

@@ -54,3 +54,7 @@ keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window"
 keymap.set("i", "<S-Tab>", "<C-d>", { desc = "Unindent in insert mode" })
 keymap.set("v", "<S-Tab>", "<<", { desc = "Unindent in visual mode" })
 keymap.set("v", "<Tab>", ">>", { desc = "Indent in visual mode" })
+
+keymap.set("n", "<leader>pv", ":Ex<Return>", {
+	desc = "Open up NETRW",
+})
