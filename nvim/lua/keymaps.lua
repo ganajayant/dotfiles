@@ -1,5 +1,4 @@
 local keymap = vim.keymap
-local opts = { noremap = true, silent = true }
 
 keymap.set("x", "<leader>p", [["_dP]], { desc = "Paste over selection without yanking" })
 
@@ -26,8 +25,8 @@ keymap.set("i", "<C-c>", "<Esc>", { desc = "Exit insert mode" })
 keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selected text down" })
 keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selected text up" })
 
-keymap.set("n", "ss", ":split<Return>", opts)
-keymap.set("n", "sv", ":vsplit<Return>", opts)
+keymap.set("n", "ss", ":split<Return>", { noremap = true, silent = true, desc = "Horizontal split" })
+keymap.set("n", "sv", ":vsplit<Return>", { noremap = true, silent = true, desc = "Vertical split" })
 
 keymap.set("n", "sh", "<C-w>h", { desc = "Move focus to the left window" })
 keymap.set("n", "sk", "<C-w>k", { desc = "Move focus to the upper window" })
@@ -55,6 +54,4 @@ keymap.set("i", "<S-Tab>", "<C-d>", { desc = "Unindent in insert mode" })
 keymap.set("v", "<S-Tab>", "<<", { desc = "Unindent in visual mode" })
 keymap.set("v", "<Tab>", ">>", { desc = "Indent in visual mode" })
 
-keymap.set("n", "<leader>pv", ":Ex<Return>", {
-	desc = "Open up NETRW",
-})
+keymap.set("n", "<leader>pv", ":Ex<Return>", { desc = "Open up NETRW" })

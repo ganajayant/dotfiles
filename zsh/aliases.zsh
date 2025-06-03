@@ -48,8 +48,6 @@ if command -v eza &>/dev/null; then
 fi
 
 # System
-alias xargs="xargs "
-alias e="exit"
 alias la="ls -A"
 alias mv="mv -v"
 alias cp="cp -rv"

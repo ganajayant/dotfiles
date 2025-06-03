@@ -23,7 +23,7 @@ hydrate() {
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(find ~/dotfiles ~/Documents -type d | fzf)
+    selected=$(find ~/Documents -type d | fzf)
 fi
 
 if [[ -z $selected ]]; then

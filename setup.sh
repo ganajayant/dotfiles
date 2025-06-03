@@ -109,8 +109,8 @@ setup_symlinks() {
     create_symlink "$DOTFILES_DIR/zsh/.zshrc" "$HOME/.zshrc"
 
     # Development tools
-    create_symlink "$DOTFILES_DIR/scripts/.clang-format" "$HOME/.clang-format"
-    create_symlink "$DOTFILES_DIR/scripts/.clangd" "$HOME/.clangd"
+    create_symlink "$DOTFILES_DIR/config/.clang-format" "$HOME/.clang-format"
+    create_symlink "$DOTFILES_DIR/config/.clangd" "$HOME/.clangd"
 
     # Applications
     create_symlink "$DOTFILES_DIR/nvim" "$CONFIG_DIR/nvim"

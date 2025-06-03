@@ -63,30 +63,6 @@ reload() {
     echo "ZSH configuration reloaded."
 }
 
-# File size summary
-fs() {
-    du -sh -- "${@:-./*}"
-}
-
-# Clone a Git repository and open in VS Code
-clonecd() {
-    if [[ $# -ne 1 ]]; then
-        echo "Invalid number of parameters. Usage: clonecd <REPO_URL>"
-        return 1
-    fi
-    git clone "$1" && cd "$(basename "$1" .git)" && code .
-}
-
-# Move up multiple directories
-up() {
-    if [[ $# -eq 0 || $1 -lt 1 ]]; then
-        echo "Usage: up <N>"
-        return 1
-    fi
-    local out=$(printf '../%.0s' $(seq 1 "$1"))
-    cd "$out" || return 1
-}
-
 # Expand alias on space
 expand-alias() {
     zle _expand_alias

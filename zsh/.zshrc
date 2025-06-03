@@ -2,7 +2,7 @@ addToPathFront() {
     [[ ":$PATH:" != *":$1:"* ]] && export PATH="$1:$PATH"
 }
 
-addToPathFront ~/dotfiles/scripts/
+addToPathFront ~/dotfiles/tmux/
 
 bindkey -s ^f "tmux-sessionizer\n"
 bindkey -e
