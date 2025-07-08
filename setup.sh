@@ -111,6 +111,7 @@ setup_symlinks() {
     # Development tools
     create_symlink "$DOTFILES_DIR/config/.clang-format" "$HOME/.clang-format"
     create_symlink "$DOTFILES_DIR/config/.clangd" "$HOME/.clangd"
+    create_symlink "$DOTFILES_DIR/tmux/tmux-sessionizer.conf" "$CONFIG_DIR/tmux-sessionizer/tmux-sessionizer.conf"
 
     # Applications
     create_symlink "$DOTFILES_DIR/nvim" "$CONFIG_DIR/nvim"
