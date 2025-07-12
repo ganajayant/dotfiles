@@ -22,7 +22,7 @@ brew "zsh-syntax-highlighting"
 cask "aerospace"
 cask "brave-browser"
 cask "cloudflare-warp"
-cask "docker"
+cask "docker-desktop"
 cask "ghostty"
 cask "iina"
 cask "linearmouse"
@@ -34,6 +34,7 @@ cask "qbittorrent"
 cask "raycast"
 cask "spotify"
 cask "visual-studio-code"
+mas "Amphetamine", id: 937984704
 mas "Telegram", id: 747648890
 mas "TickTick", id: 966085870
 vscode "aaron-bond.better-comments"

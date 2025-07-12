@@ -31,12 +31,6 @@ if command -v pip &>/dev/null; then
     alias pipcache="python -m pip cache purge"
 fi
 
-# tmux aliases
-if command -v tmux &>/dev/null; then
-    alias tmks="tmux kill-server"
-    alias tml="tmux list-sessions"
-fi
-
 # VI Editor
 if command -v nvim &>/dev/null; then
     alias vi="nvim"

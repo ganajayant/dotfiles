@@ -3,6 +3,7 @@ addToPathFront() {
 }
 
 addToPathFront ~/dotfiles/tmux/
+addToPathFront ~/dotfiles/tmux/tmux-sessionizer/
 
 bindkey -s ^f "tmux-sessionizer\n"
 bindkey -e
