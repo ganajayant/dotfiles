@@ -34,9 +34,7 @@ cask "qbittorrent"
 cask "raycast"
 cask "spotify"
 cask "visual-studio-code"
-mas "Amphetamine", id: 937984704
 mas "Telegram", id: 747648890
-mas "TickTick", id: 966085870
 vscode "aaron-bond.better-comments"
 vscode "charliermarsh.ruff"
 vscode "cschlosser.doxdocgen"
@@ -53,6 +51,7 @@ vscode "ms-python.debugpy"
 vscode "ms-python.isort"
 vscode "ms-python.python"
 vscode "ms-python.vscode-pylance"
+vscode "ms-python.vscode-python-envs"
 vscode "ms-toolsai.jupyter"
 vscode "ms-toolsai.jupyter-keymap"
 vscode "ms-toolsai.jupyter-renderers"
