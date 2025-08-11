@@ -9,6 +9,7 @@ vim.opt.expandtab = true
 vim.opt.autoindent = true
 vim.opt.smartindent = true
 vim.opt.smarttab = true
+vim.opt.winborder = "rounded"
 vim.opt.wrap = true
 vim.opt.backspace = { "start", "eol", "indent" }
 

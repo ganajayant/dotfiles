@@ -46,6 +46,10 @@ if.app-id = 'com.apple.iCal'
 run = 'move-node-to-workspace 4'
 
 [[on-window-detected]]
+if.app-id = 'com.github.eiskaltdcpp'
+run = 'move-node-to-workspace 5'
+
+[[on-window-detected]]
 if.app-id = 'com.apple.finder'
 run = [
     'layout floating',
