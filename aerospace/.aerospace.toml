@@ -26,6 +26,10 @@ if.app-id = 'notion.id'
 run = 'move-node-to-workspace 3'
 
 [[on-window-detected]]
+if.app-id = 'com.TickTick.task.mac'
+run = 'move-node-to-workspace 3'
+
+[[on-window-detected]]
 if.app-id = 'com.electron.dockerdesktop'
 run = 'move-node-to-workspace 4 '
 
@@ -47,6 +51,10 @@ run = 'move-node-to-workspace 4'
 
 [[on-window-detected]]
 if.app-id = 'com.github.eiskaltdcpp'
+run = 'move-node-to-workspace 5'
+
+[[on-window-detected]]
+if.app-id = 'com.hnc.Discord'
 run = 'move-node-to-workspace 5'
 
 [[on-window-detected]]
