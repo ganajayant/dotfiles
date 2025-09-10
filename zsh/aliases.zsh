@@ -16,7 +16,6 @@ fi
 # NPM aliases
 if command -v npm &>/dev/null; then
     alias npmup="npm upgrade -g"
-    alias npmperm="sudo chown -R $(whoami) $HOME/.local/share/fnm"
     alias npmcache="npm cache clean --force"
 fi
 

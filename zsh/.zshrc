@@ -1,3 +1,4 @@
+#!/usr/bin/env zsh
 addToPathFront() {
     [[ ":$PATH:" != *":$1:"* ]] && export PATH="$1:$PATH"
 }

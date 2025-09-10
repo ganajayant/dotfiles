@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 set -e
 log() { echo "$(date "+%Y-%m-%d %H:%M:%S") - $1"; }
@@ -130,12 +130,21 @@ update_path() {
     fi
 }
 
+after() {
+    sudo chown -R $(whoami) $HOME/.local/share/fnm
+}
+
 main() {
+    if [[ $EUID -ne 0 ]]; then
+        echo "This script must be run with sudo."
+        exit 1
+    fi
     setup_macos_preferences
     install_xcode_tools
     install_homebrew
     setup_symlinks
     update_path
+    after
     log "Setup completed successfully!"
 }
 

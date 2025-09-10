@@ -3,7 +3,20 @@ return {
 	build = ":TSUpdate",
 	branch = "master",
 	opts = {
-		ensure_installed = { "bash", "c", "diff", "html", "lua", "luadoc", "markdown", "vim", "vimdoc" },
+		ensure_installed = {
+			"bash",
+			"c",
+			"diff",
+			"html",
+			"java",
+			"lua",
+			"luadoc",
+			"markdown",
+			"toml",
+			"vim",
+			"vimdoc",
+			"yaml",
+		},
 		auto_install = true,
 		highlight = {
 			enable = true,
