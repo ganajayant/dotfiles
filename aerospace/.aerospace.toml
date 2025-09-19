@@ -25,17 +25,14 @@ run = 'move-node-to-workspace 2'
 if.app-id = 'notion.id'
 run = 'move-node-to-workspace 3'
 
-[[on-window-detected]]
-if.app-id = 'com.TickTick.task.mac'
-run = 'move-node-to-workspace 3'
 
 [[on-window-detected]]
 if.app-id = 'com.electron.dockerdesktop'
-run = 'move-node-to-workspace 4 '
+run = 'move-node-to-workspace 4'
 
 [[on-window-detected]]
 if.app-id = 'com.postmanlabs.mac'
-run = 'move-node-to-workspace 4 '
+run = 'move-node-to-workspace 4'
 
 [[on-window-detected]]
 if.app-id = 'com.spotify.client'
@@ -48,6 +45,10 @@ run = 'move-node-to-workspace 4'
 [[on-window-detected]]
 if.app-id = 'com.apple.iCal'
 run = 'move-node-to-workspace 4'
+
+[[on-window-detected]]
+if.app-id = 'com.TickTick.task.mac'
+run = 'move-node-to-workspace 5'
 
 [[on-window-detected]]
 if.app-id = 'com.github.eiskaltdcpp'
@@ -63,6 +64,10 @@ run = [
     'layout floating',
     'move-node-to-workspace r',
 ]
+
+[[on-window-detected]]
+if.app-id = 'com.apple.Preview'
+run = 'move-node-to-workspace r'
 
 [[on-window-detected]]
 if.app-id = 'ru.keepcoder.Telegram'

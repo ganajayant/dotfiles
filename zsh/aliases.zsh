@@ -4,13 +4,8 @@ if command -v brew &>/dev/null; then
     alias cleanup="brew cleanup --prune=all && brew autoremove"
 fi
 
-if command -v mas &>/dev/null; then
-    alias updatea="mas upgrade"
-    alias uninstalla="mas uninstall"
-fi
-
-if command -v mas &>/dev/null && command -v brew &>/dev/null; then
-    alias updateall="update && updatea"
+if command -v brew &>/dev/null && command -v mas &>/dev/null; then
+    alias updateall="update && mas upgrade"
 fi
 
 # NPM aliases
@@ -37,7 +32,7 @@ if command -v nvim &>/dev/null; then
 fi
 
 if command -v eza &>/dev/null; then
-    alias ls="eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions"
+    alias ls="eza --color=always --no-filesize --icons=always --no-time --no-user --no-permissions"
 fi
 
 # System
@@ -46,7 +41,6 @@ alias mv="mv -v"
 alias cp="cp -rv"
 alias rm="rm -Irv"
 alias untar="tar -zxvf"
-alias dock="sudo find 2>/dev/null /private/var/folders/ -type d -name com.apple.dock.launchpad -exec rm -rf {} +; killall Dock"
 
 # Git
 if command -v git &>/dev/null; then
