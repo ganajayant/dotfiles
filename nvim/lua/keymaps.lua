@@ -33,8 +33,14 @@ keymap.set("n", "sk", "<C-w>k", { desc = "Move focus to the upper window" })
 keymap.set("n", "sj", "<C-w>j", { desc = "Move focus to the lower window" })
 keymap.set("n", "sl", "<C-w>l", { desc = "Move focus to the right window" })
 
-keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })
-keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic message" })
+keymap.set("n", "[d", function()
+	vim.diagnostic.jump({ count = -1, float = true })
+end, { desc = "Go to previous diagnostic message (with float)" })
+
+keymap.set("n", "]d", function()
+	vim.diagnostic.jump({ count = 1, float = true })
+end, { desc = "Go to next diagnostic message (with float)" })
+
 keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostic error messages" })
 keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic quickfix list" })
 

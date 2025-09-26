@@ -13,7 +13,7 @@ return {
 				return "make install_jsregexp"
 			end)(),
 			config = function()
-				require("luasnip.loaders.from_lua").lazy_load({ paths = "~/.config/nvim/lua/custom/snippets" })
+				require("luasnip.loaders.from_lua").lazy_load({ paths = "~/.config/nvim/lua/snippets" })
 			end,
 			dependencies = {
 				{
@@ -26,8 +26,6 @@ return {
 			opts = {},
 		},
 	},
-	--- @module 'blink.cmp'
-	--- @type blink.cmp.Config
 	opts = {
 		keymap = {
 			preset = "none",
