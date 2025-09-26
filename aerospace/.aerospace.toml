@@ -25,7 +25,6 @@ run = 'move-node-to-workspace 2'
 if.app-id = 'notion.id'
 run = 'move-node-to-workspace 3'
 
-
 [[on-window-detected]]
 if.app-id = 'com.electron.dockerdesktop'
 run = 'move-node-to-workspace 4'
@@ -67,6 +66,10 @@ run = [
 
 [[on-window-detected]]
 if.app-id = 'com.apple.Preview'
+run = 'move-node-to-workspace r'
+
+[[on-window-detected]]
+if.app-id = 'info.sioyek.sioyek'
 run = 'move-node-to-workspace r'
 
 [[on-window-detected]]
@@ -127,7 +130,6 @@ alt-shift-r = 'move-node-to-workspace r --focus-follows-window'
 
 alt-tab = 'workspace-back-and-forth'
 alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
-
 alt-shift-semicolon = 'mode service'
 
 [workspace-to-monitor-force-assignment]

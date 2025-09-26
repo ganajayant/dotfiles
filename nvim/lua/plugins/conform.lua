@@ -22,6 +22,8 @@ return {
 			lua = { "stylua" },
 			["zsh"] = { "shfmt" },
 			["sh"] = { "shfmt" },
+			tex = { "latexindent" },
+			latex = { "latexindent" },
 		},
 	},
 }

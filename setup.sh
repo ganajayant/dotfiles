@@ -119,6 +119,10 @@ setup_symlinks() {
     create_symlink "$DOTFILES_DIR/aerospace/.aerospace.toml" "$HOME/.aerospace.toml"
     create_symlink "$DOTFILES_DIR/tmux/.tmux.conf" "$HOME/.tmux.conf"
     create_symlink "$DOTFILES_DIR/.gitconfig" "$HOME/.gitconfig"
+
+    # Sioyek PDF viewer
+    create_symlink "$DOTFILES_DIR/sioyek/prefs_user.config" "$HOME/Library/Application Support/sioyek/prefs_user.config"
+    create_symlink "$DOTFILES_DIR/sioyek/prefs.config" "/Applications/sioyek.app/Contents/MacOS/prefs.config"
 }
 
 update_path() {
