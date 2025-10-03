@@ -12,8 +12,8 @@ export CLICOLOR=1
 export GIT_EDITOR="nvim"
 
 # Define a file/directory preview command for FZF
-export show_file_or_dir_preview='if [ -d {} ]; then eza --tree --color=always {} | head -200; else bat -n --color=always --line-range :500 {}; fi'
+export show_file_or_dir_preview='if [ -d {} ]; then ls -lha {} | head -200; else bat -n --color=always --line-range :500 {}; fi'
 
 # Set FZF options
 export FZF_CTRL_T_OPTS="--preview '$show_file_or_dir_preview'"
-export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
+export FZF_ALT_C_OPTS="--preview 'ls -lha {} | head -200'"

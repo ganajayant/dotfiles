@@ -1,7 +1,6 @@
 tap "nikitabobko/tap"
 brew "bat"
 brew "doxygen"
-brew "eza"
 brew "fd"
 brew "fnm"
 brew "fzf"

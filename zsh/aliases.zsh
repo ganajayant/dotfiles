@@ -31,9 +31,7 @@ if command -v nvim &>/dev/null; then
     alias vim="nvim"
 fi
 
-if command -v eza &>/dev/null; then
-    alias ls="eza --color=always --no-filesize --icons=always --no-time --no-user --no-permissions"
-fi
+alias ls="ls -C -A -p --color=auto"
 
 # System
 alias la="ls -A"
