@@ -145,6 +145,27 @@ return {
 				filetypes = { "c", "cpp" },
 				capabilities = capabilities,
 			},
+			pyright = {
+				capabilities = capabilities,
+
+				settings = {
+					python = {
+						pythonPath = os.getenv("VIRTUAL_ENV") or "python",
+						analysis = {
+							autoSearchPaths = true,
+							diagnosticMode = "openFilesOnly",
+							useLibraryCodeForTypes = true,
+							ignore = { "*" },
+						},
+					},
+					pyright = {
+						disableOrganizeImports = true,
+					},
+				},
+			},
+			ruff = {
+				capabilities = capabilities,
+			},
 		}
 
 		local ensure_installed = vim.tbl_keys(servers or {})
@@ -154,6 +175,7 @@ return {
 			"gopls",
 			"jdtls",
 			"lua_ls",
+			"pyright",
 			"ruff",
 			"shfmt",
 			"stylua",

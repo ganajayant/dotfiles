@@ -19,11 +19,12 @@ return {
 			lsp_fallback = true,
 		},
 		formatters_by_ft = {
-			lua = { "stylua" },
-			["zsh"] = { "shfmt" },
-			["sh"] = { "shfmt" },
-			tex = { "latexindent" },
 			latex = { "latexindent" },
+			lua = { "stylua" },
+			["sh"] = { "shfmt" },
+			sql = { "sql_formatter" },
+			tex = { "latexindent" },
+			["zsh"] = { "shfmt" },
 		},
 	},
 }

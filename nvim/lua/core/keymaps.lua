@@ -21,6 +21,10 @@ keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>", { desc =
 keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Clear search highlight" })
 
 keymap.set("i", "<C-c>", "<Esc>", { desc = "Exit insert mode" })
+keymap.set("n", "<leader>bd", ":bd<Return>", { desc = "Buffer delete" })
+
+keymap.set("n", "<leader>s", "<Cmd>e #<CR>", { desc = "Switch to previous buffer" })
+keymap.set("n", "<leader>S", "<Cmd>bot sf #<CR>", { desc = "Split the two buffers" })
 
 keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selected text down" })
 keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selected text up" })

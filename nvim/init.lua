@@ -1,6 +1,6 @@
-require("set")
-require("keymaps")
-require("autocmds")
+require("core.set")
+require("core.keymaps")
+require("core.autocmds")
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
