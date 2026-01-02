@@ -6,6 +6,7 @@ return {
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
 		{ "j-hui/fidget.nvim", opts = {} },
 		"saghen/blink.cmp",
+		"b0o/SchemaStore.nvim",
 	},
 	config = function()
 		vim.api.nvim_create_autocmd("LspAttach", {
@@ -166,6 +167,22 @@ return {
 			ruff = {
 				capabilities = capabilities,
 			},
+			yamlls = {
+				settings = {
+					yaml = {
+						validate = true,
+						hover = true,
+						completion = true,
+
+						schemas = require("schemastore").yaml.schemas(),
+
+						schemaStore = {
+							enable = false,
+							url = "",
+						},
+					},
+				},
+			},
 		}
 
 		local ensure_installed = vim.tbl_keys(servers or {})
@@ -180,6 +197,7 @@ return {
 			"shfmt",
 			"stylua",
 			"typescript-language-server",
+			"yaml-language-server",
 		})
 		require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 

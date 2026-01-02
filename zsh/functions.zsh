@@ -7,10 +7,6 @@ mkcd() {
     mkdir -p "$1" && cd "$1" || return 1
 }
 
-count() {
-    ls -1 "$@" 2>/dev/null | wc -l
-}
-
 # Generate a Maven project
 generate_maven_project() {
     if ! command -v mvn &>/dev/null; then
@@ -33,30 +29,6 @@ generate_maven_project() {
         -DinteractiveMode=false
 }
 
-# Get App Bundle ID
-get_app_id() {
-    local app_name="$1"
-    if [[ -z "$app_name" ]]; then
-        echo "Usage: get_app_id \"Application Name\""
-        return 1
-    fi
-
-    local app_id
-    app_id=$(osascript -e "try
-    id of app \"$app_name\"
-  on error errMsg
-    return \"ERROR: \" & errMsg
-  end try")
-
-    if [[ "$app_id" == ERROR:* ]]; then
-        echo "$app_id"
-        return 1
-    else
-        echo "$app_id" | pbcopy
-        echo "Copied app ID of \"$app_name\" to clipboard: $app_id"
-    fi
-}
-
 # Reload Zsh configuration
 reload() {
     source ~/.zshrc && source ~/.zprofile
@@ -70,15 +42,3 @@ expand-alias() {
 }
 zle -N expand-alias
 bindkey -M main ' ' expand-alias
-
-# Custom FZF previews
-_fzf_comprun() {
-    local command=$1
-    shift
-    case "$command" in
-    cd) fzf --preview 'eza --tree --color=always {} | head -200' "$@" ;;
-    export | unset) fzf --preview "eval 'echo $'{}" "$@" ;;
-    ssh) fzf --preview 'dig {}' "$@" ;;
-    *) fzf --preview "bat -n --color=always --line-range :500 {}" "$@" ;;
-    esac
-}
