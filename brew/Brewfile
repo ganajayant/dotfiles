@@ -39,6 +39,7 @@ cask "spotify"
 cask "visual-studio-code"
 mas "Telegram", id: 747648890
 mas "TickTick", id: 966085870
+mas "WhatsApp", id: 310633997
 vscode "aaron-bond.better-comments"
 vscode "charliermarsh.ruff"
 vscode "cschlosser.doxdocgen"

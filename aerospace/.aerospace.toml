@@ -46,6 +46,10 @@ if.app-id = 'ru.keepcoder.Telegram'
 run = 'move-node-to-workspace c'
 
 [[on-window-detected]]
+if.app-id = 'net.whatsapp.WhatsApp'
+run = 'move-node-to-workspace c'
+
+[[on-window-detected]]
 if.app-id = 'com.apple.mail'
 run = 'move-node-to-workspace e'
 
