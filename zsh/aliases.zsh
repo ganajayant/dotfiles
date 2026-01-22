@@ -16,13 +16,19 @@ fi
 
 # Pip aliases
 if command -v pip &>/dev/null; then
-    alias pipimp="pip install ipykernel matplotlib nltk numpy pandas scikit-learn scipy seaborn spacy torch torchvision torchaudio virtualenv && pip install --upgrade certifi"
     alias pipup="pip list --format=freeze | cut -d = -f 1 | xargs pip install --upgrade"
-    alias piprm="pip freeze | cut -d "@" -f1 | xargs pip uninstall -y"
     alias pipv="python -m venv env"
     alias pipa="source env/bin/activate"
     alias piprq="pip freeze > requirements.txt"
     alias pipcache="python -m pip cache purge"
+fi
+
+if command -v uv &>/dev/null; then
+    alias uvup="uv pip list --format=freeze | cut -d = -f 1 | xargs uv pip install --upgrade"
+    alias uvv="uv venv"
+    alias uva="source .venv/bin/activate"
+    alias uvrq="uv pip freeze > requirements.txt"
+    alias uvcache="uv cache clean"
 fi
 
 # VI Editor

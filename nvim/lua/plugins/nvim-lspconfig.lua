@@ -146,7 +146,7 @@ return {
 				filetypes = { "c", "cpp" },
 				capabilities = capabilities,
 			},
-			pyright = {
+			ty = {
 				capabilities = capabilities,
 
 				settings = {
@@ -159,7 +159,7 @@ return {
 							ignore = { "*" },
 						},
 					},
-					pyright = {
+					ty = {
 						disableOrganizeImports = true,
 					},
 				},
@@ -192,10 +192,10 @@ return {
 			"gopls",
 			"jdtls",
 			"lua_ls",
-			"pyright",
 			"ruff",
 			"shfmt",
 			"stylua",
+			"ty",
 			"typescript-language-server",
 			"yaml-language-server",
 		})

@@ -135,7 +135,18 @@ update_path() {
 }
 
 after() {
-    sudo chown -R $(whoami) $HOME/.local/share/fnm
+    if command -v fnm >/dev/null 2>&1; then
+        sudo chown -R "$(whoami)" "$HOME/.local/share/fnm"
+    fi
+    if ! command -v uv >/dev/null 2>&1; then
+        if command -v pip >/dev/null 2>&1; then
+            echo "uv not found — installing via pip..."
+            pip install --user uv
+            export PATH="$HOME/.local/bin:$PATH"
+        else
+            echo "pip not found — cannot install uv"
+        fi
+    fi
 }
 
 main() {
