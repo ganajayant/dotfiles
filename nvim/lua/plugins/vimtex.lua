@@ -9,6 +9,5 @@ return {
 				executable = "latexindent",
 			},
 		}
-		vim.g.vimtex_view_method = "sioyek"
 	end,
 }

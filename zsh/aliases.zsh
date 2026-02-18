@@ -1,11 +1,15 @@
 # Update Packages
 if command -v brew &>/dev/null; then
     alias update="brew update && brew upgrade"
-    alias cleanup="brew cleanup --prune=all && brew autoremove"
 fi
 
 if command -v brew &>/dev/null && command -v mas &>/dev/null; then
     alias updateall="update && mas upgrade"
+fi
+
+# System Maintenance
+if command -v mo &>/dev/null; then
+    alias cleanup="mo clean"
 fi
 
 # NPM aliases
@@ -37,7 +41,7 @@ if command -v nvim &>/dev/null; then
     alias vim="nvim"
 fi
 
-alias ls="ls -C -A -p --color=auto"
+alias ls="ls -CAp --color=auto"
 
 # System
 alias la="ls -A"
