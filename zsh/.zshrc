@@ -1,4 +1,5 @@
 #!/usr/bin/env zsh
+
 addToPathFront() {
     [[ ":$PATH:" != *":$1:"* ]] && export PATH="$1:$PATH"
 }
@@ -11,7 +12,6 @@ bindkey -e
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 
-autoload -U compinit && compinit -C
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' menu select
 setopt sharehistory
@@ -19,13 +19,13 @@ setopt hist_ignore_all_dups hist_save_no_dups hist_ignore_dups hist_find_no_dups
 setopt completealiases
 
 # Node Version Manager (FNM)
-if command -v fnm &>/dev/null; then
+if (( ${+commands[fnm]} )); then
     eval "$(fnm env --use-on-cd)"
     [[ -f .node-version || -f .nvmrc ]] && fnm use
 fi
 
 # Fuzzy Finder (FZF)
-if command -v fzf &>/dev/null; then
+if (( ${+commands[fzf]} )); then
     eval "$(fzf --zsh)"
 fi
 
@@ -39,9 +39,8 @@ zsh_plugin_path="/opt/homebrew/share"
     source "$zsh_plugin_path/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
 # Homebrew Zsh Completions
-if command -v brew &>/dev/null; then
+if (( ${+commands[brew]} )); then
     FPATH="$(brew --prefix)/share/zsh-completions:$FPATH"
-    autoload -Uz compinit && compinit -C
 fi
 
 # Custom Aliases, Functions & Exports
@@ -55,4 +54,5 @@ fi
 # Docker Completions
 docker_completions=~/.docker/completions
 [[ -d "$docker_completions" ]] && fpath=("$docker_completions" $fpath)
+
 autoload -Uz compinit && compinit -C

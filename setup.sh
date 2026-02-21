@@ -116,6 +116,7 @@ setup_symlinks() {
     # Applications
     create_symlink "$DOTFILES_DIR/nvim" "$CONFIG_DIR/nvim"
     create_symlink "$DOTFILES_DIR/ghostty" "$CONFIG_DIR/ghostty"
+    create_symlink "$DOTFILES_DIR/linearmouse" "$CONFIG_DIR/linearmouse"
     create_symlink "$DOTFILES_DIR/aerospace/.aerospace.toml" "$HOME/.aerospace.toml"
     create_symlink "$DOTFILES_DIR/tmux/.tmux.conf" "$HOME/.tmux.conf"
     create_symlink "$DOTFILES_DIR/.gitconfig" "$HOME/.gitconfig"
