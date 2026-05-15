@@ -34,6 +34,10 @@ if.app-id = 'com.postmanlabs.mac'
 run = 'move-node-to-workspace 4'
 
 [[on-window-detected]]
+if.app-id = 'org.dbgate'
+run = 'move-node-to-workspace 4'
+
+[[on-window-detected]]
 if.app-id = 'com.TickTick.task.mac'
 run = 'move-node-to-workspace 5'
 
@@ -143,7 +147,7 @@ alt-shift-semicolon = 'mode service'
 1 = 'main'
 2 = 'main'
 3 = 'main'
-4 = 'secondary'
+4 = 'main'
 5 = 'secondary'
 c = 'main'
 e = 'main'

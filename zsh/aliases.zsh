@@ -14,8 +14,8 @@ fi
 
 # NPM aliases
 if (( ${+commands[npm]} )); then
-    alias npmup="npm upgrade -g"
-    alias npmcache="npm cache clean --force"
+    alias npm='echo "Use pnpm instead"'
+    alias npx='echo "Use pnpm dlx instead"'
 fi
 
 # Pip aliases
@@ -24,7 +24,6 @@ if (( ${+commands[pip]} )); then
     alias pipv="python -m venv env"
     alias pipa="source env/bin/activate"
     alias piprq="pip freeze > requirements.txt"
-    alias pipcache="python -m pip cache purge"
 fi
 
 if (( ${+commands[uv]} )); then
@@ -32,7 +31,6 @@ if (( ${+commands[uv]} )); then
     alias uvv="uv venv"
     alias uva="source .venv/bin/activate"
     alias uvrq="uv pip freeze > requirements.txt"
-    alias uvcache="uv cache clean"
 fi
 
 # VI Editor

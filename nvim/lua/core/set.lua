@@ -34,4 +34,6 @@ vim.g.maplocalleader = " "
 vim.g.have_nerd_font = true
 
 vim.g.netrw_banner = 0
+vim.g.netrw_list_hide = [[\.DS_Store$,__pycache__/,\.git/]]
+vim.g.netrw_hide = 1
 vim.g.netrw_winsize = 25
