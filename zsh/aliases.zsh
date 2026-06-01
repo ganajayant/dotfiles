@@ -1,32 +1,32 @@
 # Update Packages
-if (( ${+commands[brew]} )); then
+if ((${+commands[brew]})); then
     alias update="brew update && brew upgrade"
 fi
 
-if (( ${+commands[brew]} && ${+commands[mas]} )); then
+if ((${+commands[brew]} && ${+commands[mas]})); then
     alias updateall="update && mas upgrade"
 fi
 
 # System Maintenance
-if (( ${+commands[mo]} )); then
+if ((${+commands[mo]})); then
     alias cleanup="mo clean"
 fi
 
 # NPM aliases
-if (( ${+commands[npm]} )); then
+if ((${+commands[npm]})); then
     alias npm='echo "Use pnpm instead"'
     alias npx='echo "Use pnpm dlx instead"'
 fi
 
 # Pip aliases
-if (( ${+commands[pip]} )); then
+if ((${+commands[pip]})); then
     alias pipup="pip list --format=freeze | cut -d = -f 1 | xargs pip install --upgrade"
     alias pipv="python -m venv env"
     alias pipa="source env/bin/activate"
     alias piprq="pip freeze > requirements.txt"
 fi
 
-if (( ${+commands[uv]} )); then
+if ((${+commands[uv]})); then
     alias uvup="uv pip list --format=freeze | cut -d = -f 1 | xargs uv pip install --upgrade"
     alias uvv="uv venv"
     alias uva="source .venv/bin/activate"
@@ -34,7 +34,7 @@ if (( ${+commands[uv]} )); then
 fi
 
 # VI Editor
-if (( ${+commands[nvim]} )); then
+if ((${+commands[nvim]})); then
     alias vi="nvim"
     alias vim="nvim"
 fi
@@ -49,6 +49,6 @@ alias rm="rm -Irv"
 alias untar="tar -zxvf"
 
 # Git
-if (( ${+commands[git]} )); then
+if ((${+commands[git]})); then
     alias ggraph="git log --oneline --graph --all"
 fi

@@ -22,7 +22,7 @@ if.app-id = 'com.microsoft.VSCode'
 run = 'move-node-to-workspace 2'
 
 [[on-window-detected]]
-if.app-id = 'notion.id'
+if.app-id = 'md.obsidian'
 run = 'move-node-to-workspace 3'
 
 [[on-window-detected]]
@@ -36,10 +36,6 @@ run = 'move-node-to-workspace 4'
 [[on-window-detected]]
 if.app-id = 'org.dbgate'
 run = 'move-node-to-workspace 4'
-
-[[on-window-detected]]
-if.app-id = 'com.TickTick.task.mac'
-run = 'move-node-to-workspace 5'
 
 [[on-window-detected]]
 if.app-id = 'com.hnc.Discord'
@@ -73,10 +69,6 @@ run = [
 
 [[on-window-detected]]
 if.app-id = 'com.apple.Preview'
-run = 'move-node-to-workspace r'
-
-[[on-window-detected]]
-if.app-id = 'info.sioyek.sioyek'
 run = 'move-node-to-workspace r'
 
 [[on-window-detected]]
@@ -147,11 +139,11 @@ alt-shift-semicolon = 'mode service'
 1 = 'main'
 2 = 'main'
 3 = 'main'
-4 = 'main'
+4 = 'secondary'
 5 = 'secondary'
-c = 'main'
-e = 'main'
-x = 'main'
+c = 'secondary'
+e = 'secondary'
+x = 'secondary'
 r = 'main'
 
 [mode.service.binding]

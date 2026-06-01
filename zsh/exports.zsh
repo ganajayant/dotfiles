@@ -12,6 +12,6 @@ export CLICOLOR=1
 export GIT_EDITOR="nvim"
 
 # FZF Preview
-export show_file_or_dir_preview="if [ -d {} ]; then ls -lha {} | head -200; else bat -n --color=always --line-range :500 {}; fi"
+export show_file_or_dir_preview="if [ -d {} ]; then ls -lha {} | head -200; else cat -n --color=always --line-range :500 {}; fi"
 export FZF_CTRL_T_OPTS="--preview \"$show_file_or_dir_preview\""
 export FZF_ALT_C_OPTS="--preview 'ls -lha {} | head -200'"
