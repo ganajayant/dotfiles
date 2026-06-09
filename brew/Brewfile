@@ -33,6 +33,7 @@ cask "postman"
 cask "qbittorrent"
 cask "spotify"
 cask "visual-studio-code"
+mas "Kofe Flow", id: 6762003285
 mas "Telegram", id: 747648890
 vscode "aaron-bond.better-comments"
 vscode "astral-sh.ty"

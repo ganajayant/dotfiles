@@ -24,6 +24,10 @@ setup_macos_preferences() {
 
     # Suppress login welcome message
     touch ~/.hushlogin
+
+    # Screenshots folder
+    mkdir -p ~/Screenshots
+    defaults write com.apple.screencapture location ~/Screenshots
 }
 
 # Install X-Code cli tools
