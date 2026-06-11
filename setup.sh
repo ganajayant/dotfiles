@@ -7,30 +7,41 @@ log() { echo "$(date "+%Y-%m-%d %H:%M:%S") - $1"; }
 DOTFILES_DIR="$HOME/dotfiles"
 CONFIG_DIR="$HOME/.config"
 
-log "Starting dotfiles setup..."
+# Capture the real user (the one who invoked sudo)
+REAL_USER="${SUDO_USER:-$(whoami)}"
+REAL_HOME=$(eval echo "~$REAL_USER")
+DOTFILES_DIR="$REAL_HOME/dotfiles"
+CONFIG_DIR="$REAL_HOME/.config"
 
-# Apple Settings - group related settings together
-setup_macos_preferences() {
-    log "Configuring macOS preferences..."
-    # Dock settings (combined into one command)
-    defaults write com.apple.dock autohide -bool true
-    defaults write com.apple.dock autohide-delay -float 1000
-    killall Dock &>/dev/null || true
-
-    # Keyboard settings
-    defaults write -g InitialKeyRepeat -int 10
-    defaults write -g KeyRepeat -int 4
-    defaults write -g ApplePressAndHoldEnabled -bool false
-
-    # Suppress login welcome message
-    touch ~/.hushlogin
-
-    # Screenshots folder
-    mkdir -p ~/Screenshots
-    defaults write com.apple.screencapture location ~/Screenshots
+# Run a command as the real (non-root) user
+as_user() {
+    if [[ "$EUID" -eq 0 ]]; then
+        sudo -u "$REAL_USER" env HOME="$REAL_HOME" "$@"
+    else
+        "$@"
+    fi
 }
 
-# Install X-Code cli tools
+log "Starting dotfiles setup (real user: $REAL_USER)..."
+
+setup_macos_preferences() {
+    log "Configuring macOS preferences..."
+    as_user defaults write com.apple.dock autohide -bool true
+    as_user defaults write com.apple.dock autohide-delay -float 1000
+    killall Dock &>/dev/null || true
+
+    as_user defaults write -g InitialKeyRepeat -int 10
+    as_user defaults write -g KeyRepeat -int 4
+    as_user defaults write -g ApplePressAndHoldEnabled -bool false
+
+    touch "$REAL_HOME/.hushlogin"
+
+    # Create Screenshots folder and point macOS to it
+    as_user mkdir -p "$REAL_HOME/Screenshots"
+    as_user defaults write com.apple.screencapture location "$REAL_HOME/Screenshots"
+    log "Screenshots folder created and screencapture location set"
+}
+
 install_xcode_tools() {
     if [[ "$(uname)" == "Darwin" ]]; then
         log "macOS detected"
@@ -38,7 +49,7 @@ install_xcode_tools() {
             log "Xcode command-line tools already installed"
         else
             log "Installing Xcode command-line tools..."
-            xcode-select --install
+            as_user xcode-select --install
             log "Please complete the Xcode installation prompt and run this script again"
             exit 0
         fi
@@ -47,39 +58,39 @@ install_xcode_tools() {
     fi
 }
 
-# Installing Brew - with checks and error handling
 install_homebrew() {
-    if command -v brew &>/dev/null; then
+    # Homebrew refuses to run as root — always run it as the real user
+    if as_user command -v brew &>/dev/null; then
         log "Homebrew already installed"
     else
-        log "Installing Homebrew..."
-        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" || {
+        log "Installing Homebrew as $REAL_USER..."
+        as_user /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" || {
             log "Error: Homebrew installation failed"
             exit 1
         }
+    fi
 
-        # Add Homebrew to PATH (if needed)
-        if [[ "$(uname)" == "Darwin" ]]; then
-            if [[ $(arch) == "arm64" ]]; then
-                [[ -f /opt/homebrew/bin/brew ]] && eval "$(/opt/homebrew/bin/brew shellenv)"
-            else
-                [[ -f /usr/local/bin/brew ]] && eval "$(/usr/local/bin/brew shellenv)"
-            fi
+    # Ensure brew is on PATH for subsequent commands
+    if [[ "$(uname)" == "Darwin" ]]; then
+        if [[ "$(as_user uname -m)" == "arm64" ]]; then
+            [[ -f /opt/homebrew/bin/brew ]] && eval "$(/opt/homebrew/bin/brew shellenv)"
+        else
+            [[ -f /usr/local/bin/brew ]] && eval "$(/usr/local/bin/brew shellenv)"
         fi
     fi
 
     log "Disabling Homebrew analytics..."
-    brew analytics off
+    as_user brew analytics off
 
     log "Installing packages from Brewfile..."
     if [[ -f "$DOTFILES_DIR/brew/Brewfile" ]]; then
-        brew bundle --file="$DOTFILES_DIR/brew/Brewfile" || log "Warning: Some Homebrew packages failed to install"
+        as_user brew bundle --file="$DOTFILES_DIR/brew/Brewfile" ||
+            log "Warning: Some Homebrew packages failed to install"
     else
         log "Error: Brewfile not found at $DOTFILES_DIR/brew/Brewfile"
     fi
 }
 
-# Improved symlink function
 create_symlink() {
     local src=$1
     local dest=$2
@@ -89,72 +100,78 @@ create_symlink() {
         return 1
     fi
 
-    local dest_dir="$(dirname "$dest")"
+    local dest_dir
+    dest_dir="$(dirname "$dest")"
     if [[ ! -d "$dest_dir" ]]; then
-        mkdir -p "$dest_dir" && log "Created directory: $dest_dir"
+        as_user mkdir -p "$dest_dir" && log "Created directory: $dest_dir"
     fi
 
     if [[ -e "$dest" || -L "$dest" ]]; then
         if [[ -L "$dest" && "$(readlink "$dest")" == "$src" ]]; then
-            log "Symlink already exists and points to correct target: $dest -> $src"
+            log "Symlink already correct: $dest -> $src"
             return 0
         fi
-        rm -rf "$dest" && log "Removed existing file or symlink: $dest"
+        rm -rf "$dest" && log "Removed existing: $dest"
     fi
 
-    ln -s "$src" "$dest" && log "Created symlink: $dest -> $src"
+    as_user ln -s "$src" "$dest" && log "Created symlink: $dest -> $src"
 }
 
 setup_symlinks() {
     log "Setting up symlinks..."
 
-    # ZSH configuration
-    create_symlink "$DOTFILES_DIR/zsh/.zprofile" "$HOME/.zprofile"
-    create_symlink "$DOTFILES_DIR/zsh/.zshrc" "$HOME/.zshrc"
+    create_symlink "$DOTFILES_DIR/zsh/.zprofile" "$REAL_HOME/.zprofile"
+    create_symlink "$DOTFILES_DIR/zsh/.zshrc" "$REAL_HOME/.zshrc"
 
-    # Development tools
-    create_symlink "$DOTFILES_DIR/config/.clang-format" "$HOME/.clang-format"
-    create_symlink "$DOTFILES_DIR/config/.clangd" "$HOME/.clangd"
+    create_symlink "$DOTFILES_DIR/config/.clang-format" "$REAL_HOME/.clang-format"
+    create_symlink "$DOTFILES_DIR/config/.clangd" "$REAL_HOME/.clangd"
     create_symlink "$DOTFILES_DIR/tmux/tmux-sessionizer.conf" "$CONFIG_DIR/tmux-sessionizer/tmux-sessionizer.conf"
 
-    # Applications
     create_symlink "$DOTFILES_DIR/nvim" "$CONFIG_DIR/nvim"
     create_symlink "$DOTFILES_DIR/ghostty" "$CONFIG_DIR/ghostty"
     create_symlink "$DOTFILES_DIR/linearmouse" "$CONFIG_DIR/linearmouse"
-    create_symlink "$DOTFILES_DIR/aerospace/.aerospace.toml" "$HOME/.aerospace.toml"
-    create_symlink "$DOTFILES_DIR/tmux/.tmux.conf" "$HOME/.tmux.conf"
-    create_symlink "$DOTFILES_DIR/.gitconfig" "$HOME/.gitconfig"
+    create_symlink "$DOTFILES_DIR/aerospace/.aerospace.toml" "$REAL_HOME/.aerospace.toml"
+    create_symlink "$DOTFILES_DIR/tmux/.tmux.conf" "$REAL_HOME/.tmux.conf"
+    create_symlink "$DOTFILES_DIR/.gitconfig" "$REAL_HOME/.gitconfig"
 }
 
 update_path() {
-    if [[ ":$PATH:" != *":$HOME/bin:/usr/local/bin:"* ]]; then
-        export PATH="$HOME/bin:/usr/local/bin:$PATH"
-        log "PATH updated to include $HOME/bin and /usr/local/bin"
+    if [[ ":$PATH:" != *":$REAL_HOME/bin:/usr/local/bin:"* ]]; then
+        export PATH="$REAL_HOME/bin:/usr/local/bin:$PATH"
+        log "PATH updated to include $REAL_HOME/bin and /usr/local/bin"
     else
         log "PATH already contains required directories"
     fi
 }
 
 after() {
-    if command -v fnm >/dev/null 2>&1; then
-        sudo chown -R "$(whoami)" "$HOME/.local/share/fnm"
+    if as_user command -v fnm >/dev/null 2>&1; then
+        chown -R "$REAL_USER" "$REAL_HOME/.local/share/fnm"
     fi
-    if ! command -v uv >/dev/null 2>&1; then
-        if command -v pip >/dev/null 2>&1; then
-            echo "uv not found — installing via pip..."
-            pip install --user uv
-            export PATH="$HOME/.local/bin:$PATH"
+
+    if ! as_user command -v uv >/dev/null 2>&1; then
+        if as_user command -v pip >/dev/null 2>&1; then
+            log "uv not found — installing via pip..."
+            as_user pip install --user uv
+            export PATH="$REAL_HOME/.local/bin:$PATH"
         else
-            echo "pip not found — cannot install uv"
+            log "pip not found — cannot install uv"
         fi
     fi
 }
 
 main() {
     if [[ $EUID -ne 0 ]]; then
-        echo "This script must be run with sudo."
+        log "Re-running with sudo..."
+        exec sudo zsh "$0" "$@"
+    fi
+
+    if [[ -z "$SUDO_USER" || "$SUDO_USER" == "root" ]]; then
+        log "Error: run this script as a normal user via sudo, not as root directly."
+        log "Usage: sudo zsh setup.sh"
         exit 1
     fi
+
     setup_macos_preferences
     install_xcode_tools
     install_homebrew
@@ -164,4 +181,4 @@ main() {
     log "Setup completed successfully!"
 }
 
-main
+main "$@"

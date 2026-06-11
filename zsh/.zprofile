@@ -6,7 +6,6 @@ export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/b
 
 # Python Configuration
 export PATH="$PATH:$HOME/Library/Python/3.9/bin"
-alias python='python3'
 
-# TeX Configuration
-export PATH="$HOME/bin:$PATH"
+# Tex Configuration
+export PATH="/Library/TeX/texbin:$PATH"

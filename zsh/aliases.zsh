@@ -18,6 +18,12 @@ if ((${+commands[npm]})); then
     alias npx='echo "Use pnpm dlx instead"'
 fi
 
+# Python
+alias python3=/usr/bin/python3
+alias python=/usr/bin/python3
+alias pip='/usr/bin/pip3'
+alias pip3='/usr/bin/pip3'
+
 # Pip aliases
 if ((${+commands[pip]})); then
     alias pipup="pip list --format=freeze | cut -d = -f 1 | xargs pip install --upgrade"
