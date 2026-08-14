@@ -1,3 +1,5 @@
+config-version = 2
+
 start-at-login = true
 
 enable-normalization-flatten-containers = true

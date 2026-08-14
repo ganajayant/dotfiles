@@ -1,40 +1,74 @@
+tap "anomalyco/tap"
 tap "nikitabobko/tap"
+# Generate documentation for several programming languages
 brew "doxygen"
+# Simple, fast and user-friendly alternative to find
 brew "fd"
+# Fast and simple Node.js version manager
 brew "fnm"
+# Command-line fuzzy finder written in Go
 brew "fzf"
+# Distributed revision control system
 brew "git"
+# Open source programming language to build simple/reliable/efficient software
 brew "go"
+# Mac App Store command-line interface
 brew "mas"
+# Development kit for the Java programming language
 brew "openjdk"
+# Java-based project management
 brew "maven"
+# Deep clean and optimize your Mac
 brew "mole"
+# Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
+# Create, run, and share large language models (LLMs)
 brew "ollama"
+# Fast, disk space efficient package manager
 brew "pnpm"
+# Search tool like grep and The Silver Searcher
 brew "ripgrep"
+# Terminal multiplexer
 brew "tmux"
+# Parser generator tool
 brew "tree-sitter-cli"
+# Fish-like fast/unobtrusive autosuggestions for zsh
 brew "zsh-autosuggestions"
+# Additional completion definitions for zsh
 brew "zsh-completions"
+# Fish shell like syntax highlighting for zsh
 brew "zsh-syntax-highlighting"
-cask "nikitabobko/tap/aerospace"
+# The AI coding agent built for the terminal.
+brew "anomalyco/tap/opencode", trusted: true
+# AeroSpace is an i3-like tiling window manager for macOS
+cask "nikitabobko/tap/aerospace", trusted: true
+# Web browser focusing on privacy
 cask "brave-browser"
+# Free app that makes your Internet safer
 cask "cloudflare-warp"
-cask "dbgate"
+# Voice and text chat software
 cask "discord"
+# App to build and share containerised applications and microservices
 cask "docker-desktop"
+# Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
+# Free and open-source media player
 cask "iina"
+# Customise mouse behavior
 cask "linearmouse"
+# Full TeX Live distribution without GUI applications
 cask "mactex-no-gui"
+# Knowledge base that works on top of a local folder of plain text Markdown files
 cask "obsidian"
+# Collaboration platform for API development
 cask "postman"
+# Peer to peer Bitorrent client
 cask "qbittorrent"
+# Music streaming service
 cask "spotify"
+# Open-source code editor
 cask "visual-studio-code"
 mas "Kofe Flow", id: 6762003285
-mas "Telegram", id: 747648890
 vscode "aaron-bond.better-comments"
 vscode "astral-sh.ty"
 vscode "charliermarsh.ruff"
@@ -68,3 +102,4 @@ vscode "vscjava.vscode-java-pack"
 vscode "vscjava.vscode-java-test"
 vscode "vscjava.vscode-maven"
 go "golang.org/x/tools/gopls"
+npm "corepack"
