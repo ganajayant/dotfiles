@@ -56,3 +56,11 @@ docker_completions=~/.docker/completions
 [[ -d "$docker_completions" ]] && fpath=("$docker_completions" $fpath)
 
 autoload -Uz compinit && compinit -C
+
+# pnpm
+export PNPM_HOME="/Users/ganajayantsigadam/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME/bin:"*) ;;
+  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
+esac
+# pnpm end

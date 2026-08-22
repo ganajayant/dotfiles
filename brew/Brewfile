@@ -1,4 +1,3 @@
-tap "anomalyco/tap"
 tap "nikitabobko/tap"
 # Generate documentation for several programming languages
 brew "doxygen"
@@ -38,8 +37,6 @@ brew "zsh-autosuggestions"
 brew "zsh-completions"
 # Fish shell like syntax highlighting for zsh
 brew "zsh-syntax-highlighting"
-# The AI coding agent built for the terminal.
-brew "anomalyco/tap/opencode", trusted: true
 # AeroSpace is an i3-like tiling window manager for macOS
 cask "nikitabobko/tap/aerospace", trusted: true
 # Web browser focusing on privacy
