@@ -26,6 +26,10 @@ vim.opt.splitbelow = true
 vim.opt.winborder = "rounded"
 vim.opt.inccommand = "split"
 
+vim.opt.foldmethod = "indent"
+vim.opt.foldenable = true
+vim.opt.foldlevel = 99
+
 vim.opt.updatetime = 200
 vim.opt.timeoutlen = 300
 

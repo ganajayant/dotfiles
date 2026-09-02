@@ -13,10 +13,10 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 	command = [[%s/\s\+$//e]],
 })
 
-vim.api.nvim_create_autocmd("VimEnter", {
+vim.api.nvim_create_autocmd("VimResized", {
+	pattern = "*",
+	group = vim.api.nvim_create_augroup("auto_resize_splits", {}),
 	callback = function()
-		if vim.fn.expand("%") == "" then
-			vim.cmd("Explore")
-		end
+		vim.api.nvim_command("wincmd =")
 	end,
 })

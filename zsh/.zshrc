@@ -57,6 +57,13 @@ docker_completions=~/.docker/completions
 
 autoload -Uz compinit && compinit -C
 
+# Git Branch
+parse_git_branch() {
+    git branch 2> /dev/null | sed -n -e 's/^\* \(.*\)/(\1)/p'
+}
+setopt PROMPT_SUBST
+export PROMPT='%n@%m %1~ %F{green}$(parse_git_branch)%f $ '
+
 # pnpm
 export PNPM_HOME="/Users/ganajayantsigadam/Library/pnpm"
 case ":$PATH:" in
