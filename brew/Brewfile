@@ -25,6 +25,8 @@ brew "neovim"
 brew "ollama"
 # Fast, disk space efficient package manager
 brew "pnpm"
+# Theme for zsh
+brew "powerlevel10k"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Terminal multiplexer

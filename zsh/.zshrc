@@ -1,5 +1,12 @@
 #!/usr/bin/env zsh
 
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+    source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 addToPathFront() {
     [[ ":$PATH:" != *":$1:"* ]] && export PATH="$1:$PATH"
 }
@@ -57,13 +64,6 @@ docker_completions=~/.docker/completions
 
 autoload -Uz compinit && compinit -C
 
-# Git Branch
-parse_git_branch() {
-    git branch 2> /dev/null | sed -n -e 's/^\* \(.*\)/(\1)/p'
-}
-setopt PROMPT_SUBST
-export PROMPT='%n@%m %1~ %F{green}$(parse_git_branch)%f $ '
-
 # pnpm
 export PNPM_HOME="/Users/ganajayantsigadam/Library/pnpm"
 case ":$PATH:" in
@@ -71,3 +71,6 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME/bin:$PATH" ;;
 esac
 # pnpm end
+
+source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
