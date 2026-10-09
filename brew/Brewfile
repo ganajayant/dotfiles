@@ -1,4 +1,3 @@
-tap "abue-ammar/tinycast", trusted: { casks: ["tinycast"] }
 tap "nikitabobko/tap"
 # Generate documentation for several programming languages
 brew "doxygen"
@@ -42,8 +41,6 @@ brew "zsh-completions"
 brew "zsh-syntax-highlighting"
 # AeroSpace is an i3-like tiling window manager for macOS
 cask "nikitabobko/tap/aerospace", trusted: true
-# Display management tool
-cask "betterdisplay"
 # Web browser focusing on privacy
 cask "brave-browser"
 # Free app that makes your Internet safer
@@ -56,8 +53,6 @@ cask "docker-desktop"
 cask "ghostty"
 # Free and open-source media player
 cask "iina"
-# Customise mouse behavior
-cask "linearmouse"
 # Full TeX Live distribution without GUI applications
 cask "mactex-no-gui"
 # Knowledge base that works on top of a local folder of plain text Markdown files
@@ -68,6 +63,8 @@ cask "postman"
 cask "spotify"
 # Open-source code editor
 cask "visual-studio-code"
+# Menu bar toolkit with keep-awake, system monitor and volume mixer
+cask "vorssaint"
 mas "Kofe Flow", id: 6762003285
 vscode "aaron-bond.better-comments"
 vscode "astral-sh.ty"
