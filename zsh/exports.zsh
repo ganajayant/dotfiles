@@ -3,7 +3,7 @@ export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 
 # Go Language Setup
 export GOPATH="$HOME/go"
-export PATH="/usr/local/go/bin:$GOPATH/bin:$PATH"
+export PATH="$GOPATH/bin:$PATH"
 
 # Enable colored output
 export CLICOLOR=1

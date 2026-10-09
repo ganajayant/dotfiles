@@ -7,12 +7,14 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
     source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+DOTFILES_DIR="${${(%):-%x}:A:h:h}"
+
 addToPathFront() {
     [[ ":$PATH:" != *":$1:"* ]] && export PATH="$1:$PATH"
 }
 
-addToPathFront ~/dotfiles/tmux/
-addToPathFront ~/dotfiles/tmux/tmux-sessionizer/
+addToPathFront "$DOTFILES_DIR/tmux/"
+addToPathFront "$DOTFILES_DIR/tmux/tmux-sessionizer/"
 
 bindkey -s ^f "tmux-sessionizer\n"
 bindkey -e
@@ -26,13 +28,13 @@ setopt hist_ignore_all_dups hist_save_no_dups hist_ignore_dups hist_find_no_dups
 setopt completealiases
 
 # Node Version Manager (FNM)
-if (( ${+commands[fnm]} )); then
+if ((${+commands[fnm]})); then
     eval "$(fnm env --use-on-cd)"
     [[ -f .node-version || -f .nvmrc ]] && fnm use
 fi
 
 # Fuzzy Finder (FZF)
-if (( ${+commands[fzf]} )); then
+if ((${+commands[fzf]})); then
     eval "$(fzf --zsh)"
 fi
 
@@ -46,12 +48,12 @@ zsh_plugin_path="/opt/homebrew/share"
     source "$zsh_plugin_path/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
 # Homebrew Zsh Completions
-if (( ${+commands[brew]} )); then
+if ((${+commands[brew]})); then
     FPATH="$(brew --prefix)/share/zsh-completions:$FPATH"
 fi
 
 # Custom Aliases, Functions & Exports
-config_dir=~/dotfiles/zsh
+config_dir="$DOTFILES_DIR/zsh"
 if [[ -d "$config_dir" ]]; then
     for config_file in "$config_dir"/{aliases,exports,functions}.zsh; do
         [[ -f "$config_file" ]] && source "$config_file"
@@ -62,20 +64,17 @@ fi
 docker_completions=~/.docker/completions
 [[ -d "$docker_completions" ]] && fpath=("$docker_completions" $fpath)
 
-autoload -Uz compinit && compinit -C
-
 # pnpm
-export PNPM_HOME="/Users/ganajayantsigadam/Library/pnpm"
+export PNPM_HOME="$HOME/Library/pnpm"
 case ":$PATH:" in
-  *":$PNPM_HOME/bin:"*) ;;
-  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
+*":$PNPM_HOME/bin:"*) ;;
+*) export PATH="$PNPM_HOME/bin:$PATH" ;;
 esac
 # pnpm end
 
 source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-# The following lines have been added by Docker Desktop to enable Docker CLI completions.
-fpath=(/Users/ganajayantsigadam/.docker/completions $fpath)
-autoload -Uz compinit
-(( ${+_comps[docker]} )) || compinit
-# End of Docker CLI completions
+[[ ! -f "$DOTFILES_DIR/zsh/.p10k.zsh" ]] || source "$DOTFILES_DIR/zsh/.p10k.zsh"
+
+export PATH="$HOME/.local/bin:$PATH"
+
+autoload -Uz compinit && compinit -C

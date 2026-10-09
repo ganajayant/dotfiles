@@ -7,11 +7,6 @@ if ((${+commands[brew]} && ${+commands[mas]})); then
     alias updateall="update && mas upgrade"
 fi
 
-# System Maintenance
-if ((${+commands[mo]})); then
-    alias cleanup="mo clean"
-fi
-
 # NPM aliases
 if ((${+commands[npm]})); then
     alias npm='echo "Use pnpm instead"'

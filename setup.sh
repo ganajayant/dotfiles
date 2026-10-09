@@ -3,14 +3,13 @@
 set -e
 log() { echo "$(date "+%Y-%m-%d %H:%M:%S") - $1"; }
 
-# DOTFILES_DIR path setup - define once, use everywhere
-DOTFILES_DIR="$HOME/dotfiles"
-CONFIG_DIR="$HOME/.config"
-
 # Capture the real user (the one who invoked sudo)
 REAL_USER="${SUDO_USER:-$(whoami)}"
 REAL_HOME=$(eval echo "~$REAL_USER")
-DOTFILES_DIR="$REAL_HOME/dotfiles"
+
+# Resolve the dotfiles directory from this script's location so the repo can
+# live anywhere (not just ~/dotfiles)
+DOTFILES_DIR="${0:A:h}"
 CONFIG_DIR="$REAL_HOME/.config"
 
 # Run a command as the real (non-root) user
@@ -117,11 +116,20 @@ create_symlink() {
     as_user ln -s "$src" "$dest" && log "Created symlink: $dest -> $src"
 }
 
+init_submodules() {
+    if [[ -f "$DOTFILES_DIR/.gitmodules" ]]; then
+        log "Initializing git submodules..."
+        as_user git -C "$DOTFILES_DIR" submodule update --init --recursive ||
+            log "Warning: failed to initialize git submodules"
+    fi
+}
+
 setup_symlinks() {
     log "Setting up symlinks..."
 
     create_symlink "$DOTFILES_DIR/zsh/.zprofile" "$REAL_HOME/.zprofile"
     create_symlink "$DOTFILES_DIR/zsh/.zshrc" "$REAL_HOME/.zshrc"
+    create_symlink "$DOTFILES_DIR/zsh/.p10k.zsh" "$REAL_HOME/.p10k.zsh"
 
     create_symlink "$DOTFILES_DIR/config/.clang-format" "$REAL_HOME/.clang-format"
     create_symlink "$DOTFILES_DIR/config/.clangd" "$REAL_HOME/.clangd"
@@ -129,7 +137,6 @@ setup_symlinks() {
 
     create_symlink "$DOTFILES_DIR/nvim" "$CONFIG_DIR/nvim"
     create_symlink "$DOTFILES_DIR/ghostty" "$CONFIG_DIR/ghostty"
-    create_symlink "$DOTFILES_DIR/linearmouse" "$CONFIG_DIR/linearmouse"
     create_symlink "$DOTFILES_DIR/aerospace/.aerospace.toml" "$REAL_HOME/.aerospace.toml"
     create_symlink "$DOTFILES_DIR/tmux/.tmux.conf" "$REAL_HOME/.tmux.conf"
     create_symlink "$DOTFILES_DIR/.gitconfig" "$REAL_HOME/.gitconfig"
@@ -175,6 +182,7 @@ main() {
     setup_macos_preferences
     install_xcode_tools
     install_homebrew
+    init_submodules
     setup_symlinks
     update_path
     after

@@ -1,37 +1,82 @@
-# Dotfiles Repository
+# Dotfiles
 
-Welcome to my dotfiles repository! This repository contains my personalized configuration files for various command-line tools and applications. With these dotfiles, I aim to streamline my development environment and enhance productivity.
+My personal macOS development environment: Zsh, Neovim, tmux, AeroSpace, Ghostty and a Homebrew `Brewfile`, wired up by a single `setup.sh`.
 
-## Features
-- **Aliases:** Shortcuts for commonly used commands and custom command shortcuts.
-- **Functions:** Custom shell functions to automate tasks and improve workflow.
-- **Settings:** Configuration files for applications such as Vim, Git, and more.
-- **Customizations:** Tweaks, preferences, and settings for a personalized command-line experience.
+The repo is a plain dotfiles repository (no stow/chezmoi) — `setup.sh` symlinks files from this repo into your home directory and installs the tooling.
 
-Feel free to explore the dotfiles, adapt them to your needs, or use them as a reference for creating your own custom configurations.
+## Directory layout
+
+| Path | What it is |
+| --- | --- |
+| `zsh/` | Zsh config: `.zshrc`, `.zprofile`, plus `aliases.zsh`, `exports.zsh`, `functions.zsh` (sourced) |
+| `nvim/` | Neovim config (Lazy.nvim) with LSP, Treesitter, fzf-lua, etc. |
+| `tmux/` | tmux config and the `tmux-sessionizer` submodule |
+| `aerospace/` | AeroSpace tiling window manager config |
+| `ghostty/` | Ghostty terminal config |
+| `brew/` | `Brewfile` — CLI tools, casks, VS Code extensions |
+| `config/` | `.clang-format` and `.clangd` |
+| `setup.sh` | Installer: macOS defaults, Homebrew, submodules, symlinks |
+| `.gitconfig` | Git config (symlinked to `~/.gitconfig`) |
+
+## Prerequisites
+
+- macOS (the script configures macOS `defaults` and installs Homebrew)
+- A normal (non-root) user account with `sudo` access
+- Xcode Command Line Tools — the script triggers the install prompt if missing
 
 ## Installation
-To use these dotfiles, follow these steps:
 
-1. Clone the repository to your local machine:
-```git clone https://github.com/ganajayant/dotfiles.git```
+1. Clone the repository **with submodules**:
 
-2. Explore the different configuration files (e.g., `.zshrc`, `aliases.zsh`, `functions.zsh`) to familiarize yourself with the available settings and customizations.
+   ```sh
+   git clone --recurse-submodules https://github.com/ganajayant/dotfiles.git
+   ```
 
-3. Customize the dotfiles to your liking, adding your own aliases, functions, or modifying existing configurations.
+   Already cloned without them? Initialize the `tmux-sessionizer` submodule:
 
-4. Symlink the desired configuration files to their appropriate locations in your home directory. For example:
-```chmod +x setup.sh && ./setup.sh```
+   ```sh
+   git submodule update --init --recursive
+   ```
 
-5. Restart your terminal or reload the configuration files for the changes to take effect.
+   `setup.sh` also runs this step, but doing it up front avoids surprises.
 
-## Contributions
-Contributions to this dotfiles repository are welcome! If you have any suggestions for improvements, bug fixes, or new features, feel free to open an issue or submit a pull request.
+2. Run the installer (it re-executes itself with `sudo`):
 
-## Disclaimer
-Please note that these dotfiles are provided as-is and tailored to my specific needs. Use them at your own risk and make sure to review and modify the configurations as necessary to suit your environment.
+   ```sh
+   chmod +x setup.sh && ./setup.sh
+   ```
+
+3. Restart your terminal or run `reload` to pick up the new config.
+
+You can clone the repo anywhere — `setup.sh` resolves its own location, so it does not assume `~/dotfiles`.
+
+## What `setup.sh` does
+
+- Sets a few macOS preferences (Dock autohide, fast key repeat, screenshot location).
+- Installs Xcode Command Line Tools if needed.
+- Installs Homebrew, disables analytics, and runs `brew bundle` against `brew/Brewfile`.
+- Initializes git submodules (`tmux-sessionizer`).
+- Symlinks the config files below.
+- Adds `~/bin` and `/usr/local/bin` to `PATH` and finishes tooling setup (fnm, uv).
+
+### Symlinks created
+
+| Repo path | Destination |
+| --- | --- |
+| `zsh/.zprofile` | `~/.zprofile` |
+| `zsh/.zshrc` | `~/.zshrc` |
+| `zsh/.p10k.zsh` | `~/.p10k.zsh` |
+| `config/.clang-format` | `~/.clang-format` |
+| `config/.clangd` | `~/.clangd` |
+| `tmux/tmux-sessionizer.conf` | `~/.config/tmux-sessionizer/tmux-sessionizer.conf` |
+| `tmux/.tmux.conf` | `~/.tmux.conf` |
+| `nvim` | `~/.config/nvim` |
+| `ghostty` | `~/.config/ghostty` |
+| `aerospace/.aerospace.toml` | `~/.aerospace.toml` |
+| `.gitconfig` | `~/.gitconfig` |
+
+`zsh/aliases.zsh`, `zsh/exports.zsh` and `zsh/functions.zsh` are sourced by `.zshrc` and are not symlinked individually.
 
 ## License
-This repository is licensed under the [MIT License](LICENSE). Feel free to use and modify the code as per the terms of the license.
 
-Feel free to customize the content according to your specific dotfiles and preferences.
+[MIT](LICENSE).
