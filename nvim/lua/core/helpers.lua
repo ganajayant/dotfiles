@@ -10,10 +10,10 @@ local function getCurrentGitBranch()
 end
 
 local function getBaseGitBranch()
-	-- Mirror the shell `_mb` helper (system/.aliases.d/20-git-helpers.sh):
-	-- EXACT-match the candidate names so a branch merely *containing* one of
-	-- them (e.g. `maintenance`, `domain`, `main-backup`) is never mistaken for
-	-- the base branch. Falls back to the symbolic HEAD for bare repos.
+	-- Detect the base branch by exact-matching common names. Use an EXACT
+	-- match so a branch merely *containing* one of them (e.g. `maintenance`,
+	-- `domain`, `main-backup`) is never mistaken for the base branch.
+	-- Falls back to the symbolic HEAD for bare repos.
 	local gitCommand = [=[
         branches=$(git branch --format='%(refname:short)' 2>/dev/null)
         for name in main master develop; do
@@ -35,7 +35,6 @@ local function getBaseGitBranch()
 end
 
 -- Export all helpers
-M.Virtual_text = Virtual_text
 M.getCurrentGitBranch = getCurrentGitBranch
 M.getBaseGitBranch = getBaseGitBranch
 return M

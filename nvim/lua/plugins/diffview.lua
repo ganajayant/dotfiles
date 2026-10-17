@@ -4,7 +4,7 @@ return {
 	cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewFileHistory" },
 	keys = {
 		-- Mnemonic: git diff main. Base branch is auto-detected
-		-- (mirrors the shell `_mb` alias — main → master → develop).
+		-- (main → master → develop).
 		-- Three-dot range honours the merge-base, so unrelated commits on the
 		-- base don't pollute the review.
 		-- --imply-local makes the right-hand side the working-tree
@@ -34,9 +34,8 @@ return {
 			function()
 				require("fzf-lua").git_branches({
 					-- Scope to local branches only (`refs/heads`). The monorepo
-					-- uses a bare, blobless, single-branch worktree clone (see
-					-- system/.aliases.d/40-git-worktrees.sh): `refs/remotes`
-					-- accumulates thousands of *loose* remote-tracking refs from
+					-- uses a bare, blobless, single-branch worktree clone:
+					-- `refs/remotes` accumulates thousands of *loose* remote-tracking refs from
 					-- incremental fetches, and enumerating + date-sorting those
 					-- (a stat() storm, no commit-graph) is what made this slow.
 					-- PR review here targets worktree branches, which live in

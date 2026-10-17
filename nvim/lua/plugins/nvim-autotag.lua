@@ -31,5 +31,4 @@ return {
 			},
 		},
 	},
-	config = function() end,
 }

@@ -1,3 +1,4 @@
-CompileFlags:
-  Add:
-    - "-I/Library/Developer/CommandLineTools/usr/include"
+# Project-local clangd configuration.
+# Add extra compile flags here if needed, e.g.
+# CompileFlags:
+#   Add: ["-I/path/to/include"]
