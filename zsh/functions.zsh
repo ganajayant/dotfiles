@@ -31,8 +31,7 @@ generate_maven_project() {
 
 # Reload Zsh configuration
 reload() {
-    source ~/.zshrc && source ~/.zprofile
-    echo "ZSH configuration reloaded."
+    exec zsh -l
 }
 
 # Expand alias on space

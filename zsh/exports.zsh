@@ -16,7 +16,7 @@ export show_file_or_dir_preview='
   if [ -d "{}" ]; then
     ls -lha "{}" | head -200
   else
-    cat -n --color=always --line-range :500 "{}"
+    cat -n "{}"
   fi
 '
 

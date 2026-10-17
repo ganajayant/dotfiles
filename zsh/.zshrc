@@ -9,6 +9,14 @@ fi
 
 DOTFILES_DIR="${${(%):-%x}:A:h:h}"
 
+# Keep PATH free of duplicate entries
+typeset -U path PATH
+
+# Homebrew prefix (normally exported by `brew shellenv` in .zprofile)
+if [[ -z "$HOMEBREW_PREFIX" ]] && ((${+commands[brew]})); then
+    HOMEBREW_PREFIX="$(brew --prefix)"
+fi
+
 addToPathFront() {
     [[ ":$PATH:" != *":$1:"* ]] && export PATH="$1:$PATH"
 }
@@ -39,7 +47,7 @@ if ((${+commands[fzf]})); then
 fi
 
 # Zsh Plugins
-zsh_plugin_path="/opt/homebrew/share"
+zsh_plugin_path="$HOMEBREW_PREFIX/share"
 
 [[ -f "$zsh_plugin_path/zsh-autosuggestions/zsh-autosuggestions.zsh" ]] &&
     source "$zsh_plugin_path/zsh-autosuggestions/zsh-autosuggestions.zsh"
@@ -48,8 +56,8 @@ zsh_plugin_path="/opt/homebrew/share"
     source "$zsh_plugin_path/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
 # Homebrew Zsh Completions
-if ((${+commands[brew]})); then
-    FPATH="$(brew --prefix)/share/zsh-completions:$FPATH"
+if [[ -n "$HOMEBREW_PREFIX" ]]; then
+    FPATH="$HOMEBREW_PREFIX/share/zsh-completions:$FPATH"
 fi
 
 # Custom Aliases, Functions & Exports
@@ -72,7 +80,8 @@ case ":$PATH:" in
 esac
 # pnpm end
 
-source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
+[[ -f "$HOMEBREW_PREFIX/share/powerlevel10k/powerlevel10k.zsh-theme" ]] &&
+    source "$HOMEBREW_PREFIX/share/powerlevel10k/powerlevel10k.zsh-theme"
 [[ ! -f "$DOTFILES_DIR/zsh/.p10k.zsh" ]] || source "$DOTFILES_DIR/zsh/.p10k.zsh"
 
 export PATH="$HOME/.local/bin:$PATH"
